@@ -19,7 +19,8 @@ Phase Two -
 Phase Three -
 
 # Team Management
-![alt](https://github.com/team-jjtg/CityRank/projects/1)
+
+[Project Board](https://github.com/team-jjtg/CityRank/projects/1)
 
 # WireFrame
 
