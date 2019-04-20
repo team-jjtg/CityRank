@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>API Test</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h2>API Test</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <!-- The scope attribute specifies that this is a header for a column -->
+          <th scope="col">County</th>
+          <th scope="col">State Code</th>
+          <th scope="col">County Code</th>
+          <th scope="col">Median Home Price</th>
+        </tr>
+      </thead>
+      <tbody>
+  
+      </tbody>
+    </table>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    var searchInput = "";
+    var queryURL = "https://api.census.gov/data/2017/acs/acs5/profile?get=DP04_0089E,NAME&for=county:*";
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+      // Create a new table row element
+      var tRow = $("<tr>");
+
+
+      //Want to scan the response JSON and look for a containing zip code based on our user search and then pull that response index and its [0] to show house price
+      console.log(response);
+     
+        var specificCounty = 300;
+        //function checkZip(response) {
+         // return response == 78613;
+            
+        var countyId = $("<td>").text(response[specificCounty][1]);
+        var stateCodeId = $("<td>").text(response[specificCounty][2]);
+        var countyCodeId = $("<td>").text(response[specificCounty][3]);
+        var medianHPrice = $("<td>").text(response[specificCounty][0]);
+      
+      // Append the newly created table data to the table row
+      tRow.append(countyId, stateCodeId, countyCodeId, medianHPrice);
+      // Append the table row to the table body
+      $("tbody").append(tRow);
+    });
+
+
+  </script>
+</body>
+
+</html>
