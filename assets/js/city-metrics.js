@@ -299,6 +299,7 @@ CityMetrics.prototype.cherryPickFields = function(arrayOfFields, item) {
 
 function UnitTestCityMetrics() {
 	cm = new CityMetrics();
+	let normalizedData = [];
 	while (cm.hasMoreItems()) {
 		let index = cm.index;
 		let item = cm.getNextItem();
@@ -324,7 +325,14 @@ function UnitTestCityMetrics() {
 
 		let json = cm.cherryPickFields(["happiness", "politics"], item);
 		console.log("cherry picking ", cityState, "json = ", json);
+		let normalizedItem = {};
+		normalizedItem[cityState] = json;
+		normalizedData.push(normalizedItem);
+
 	}
+	console.log("This is our normalized data ready to upload to firebase-ish");
+	console.log(normalizedData);
+	
 	// IMPORTANT: You must call this method if you iterate over the list of
 	//            cities multiple times (i.e., between iterations)
 	//            otherwise the internally maintained index will not be reset.
