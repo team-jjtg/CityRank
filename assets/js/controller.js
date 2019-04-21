@@ -5,6 +5,14 @@ function Controller() {
     this.countyToPolitics = new CountyToPolitics();
     this.addButtonListeners();
     console.log(this.countyToPolitics.data);
+
+    // Example of iterating across all cities in cityMetrics
+
+    let cityKeys = Object.keys(cityMetrics);
+    for (let cityKey of cityKeys) {
+        console.log("cityKey = ", cityKey);
+        console.log("happiness = ", cityMetrics[cityKey].happiness);
+    }
 }
 
 Controller.prototype.addButtonListeners = function() {
