@@ -202,6 +202,60 @@ let cityMetrics = [
 	{"Detroit, MI": { "county": "Monroe County", "happiness": 29.19, "wellbeing": 181, "income_and_employment": 181, "community_and_environment": 181 }}
 ];
 
+let stateToST = {
+	"Alabama": "AL",
+	"Alaska": "AK",
+	"Arizona": "AZ",
+	"Arkansas": "AR",
+	"California": "CA",
+	"Colorado": "CO",
+	"Connecticut": "CN",
+	"Delaware": "DE",
+	"District of Columbia": "DC",
+	"Florida": "FL",
+	"Georgia": "GA",
+	"Hawaii": "HI",
+	"Idaho": "ID",
+	"Illinois": "IL",
+	"Indiana": "IN",
+	"Iowa": "IA",
+	"Kansas": "KS",
+	"Kentucky": "KY",
+	"Louisiana": "LA",
+	"Maine": "ME",
+	"Maryland": "MD",
+	"Massachusetts": "MA",
+	"Michigan": "MI",
+	"Minnesota": "MN",
+	"Mississippi": "MS",
+	"Missouri": "MO",
+	"Montana": "MT",
+	"Nebraska": "NE",
+	"Nevada": "NV",
+	"New Hampshire": "NH",
+	"New Jersey": "NJ",
+	"New Mexico": "NM",
+	"New York": "NY",
+	"North Carolina": "NC",
+	"North Dakota": "ND",
+	"Ohio": "OH",
+	"Oklahoma": "OK",
+	"Oregon": "OR",
+	"Pennsylvania": "PA",
+	"Rhode Island": "RI",
+	"South Carolina": "SC",
+	"South Dakota": "SD",
+	"Tennessee": "TN",
+	"Texas": "TX",
+	"Utah": "UT",
+	"Vermont": "VT",
+	"Virginia": "VA",
+	"Washington": "WA",
+	"West Virginia": "WV",
+	"Wisconsin": "WI",
+	"Wyoming": "WY"
+};
+
 function CityMetrics() {
 	this.index = 0;
 };
@@ -217,6 +271,10 @@ CityMetrics.prototype.getItem = function(index) {
 }
 CityMetrics.prototype.reset = function() {
 	this.index = 0;
+}
+CityMetrics.prototype.stateToST = stateToST;
+CityMetrics.prototype.getST = function(state) {
+	return this.stateToST[state];
 }
 CityMetrics.prototype.getCityState = function(item) {
 	return Object.keys(item);
@@ -345,4 +403,7 @@ function UnitTestCityMetrics() {
 
 	cm.data.sort(cm.getCompareHappinessFunctionDescending());
 	console.log("City data sorted by happiness (descending): ", cm.data);
+
+	let st = cm.getST("Alabama");
+	console.log("State abbreviation for Alabama is ", st);
 }
