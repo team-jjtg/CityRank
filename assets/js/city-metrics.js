@@ -256,6 +256,60 @@ let stateToST = {
 	"Wyoming": "WY"
 };
 
+let STtoState = {
+	"AL": "Alabama",
+	"AK": "Alaska",
+	"AZ": "Arizona",
+	"AR": "Arkansas",
+	"CA": "California",
+	"CO": "Colorado",
+	"CN": "Connecticut",
+	"DE": "Delaware",
+	"DC": "District of Columbia",
+	"FL": "Florida",
+	"GA": "Georgia",
+	"HI": "Hawaii",
+	"ID": "Idaho",
+	"IL": "Illinois",
+	"IN": "Indiana",
+	"IA": "Iowa",
+	"KS": "Kansas",
+	"KY": "Kentucky",
+	"LA": "Louisiana",
+	"ME": "Maine",
+	"MD": "Maryland",
+	"MA": "Massachusetts",
+	"MI": "Michigan",
+	"MN": "Minnesota",
+	"MS": "Mississippi",
+	"MO": "Missouri",
+	"MT": "Montana",
+	"NE": "Nebraska",
+	"NV": "Nevada",
+	"NH": "New Hampshire",
+	"NJ": "New Jersey",
+	"NM": "NM",
+	"NY": "New York",
+	"NC": "North Carolina",
+	"ND": "North Dakota",
+	"OH": "Ohio",
+	"OK": "Oklahoma",
+	"OR": "Oregon",
+	"PA": "Pennsylvania",
+	"RI": "Rhode Island",
+	"SC": "South Carolina",
+	"SD": "South Dakota",
+	"TN": "Tennessee",
+	"TX": "Texas",
+	"UT": "Utah",
+	"VT": "Vermont",
+	"VA": "Virginia",
+	"WA": "Washington",
+	"WV": "West Virginia",
+	"WI": "Wisconsin",
+	"WY": "Wyoming"
+};
+
 function CityMetrics() {
 	this.index = 0;
 };
@@ -273,8 +327,12 @@ CityMetrics.prototype.reset = function() {
 	this.index = 0;
 }
 CityMetrics.prototype.stateToST = stateToST;
+CityMetrics.prototype.STtoState = STtoState;
 CityMetrics.prototype.getST = function(state) {
 	return this.stateToST[state];
+}
+CityMetrics.prototype.getState = function(ST) {
+	return this.STtoState[ST];
 }
 CityMetrics.prototype.getCityState = function(item) {
 	return Object.keys(item);
@@ -406,4 +464,7 @@ function UnitTestCityMetrics() {
 
 	let st = cm.getST("Alabama");
 	console.log("State abbreviation for Alabama is ", st);
+
+	let ST = cm.getState("AL");
+	console.log("Elaborated state from AL is ", ST);
 }
