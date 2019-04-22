@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Test File</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h1>Check out the Console</h1>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+    <script type="text/javascript">
+
+      //iterate over city metrics with cityHomePrice - set up a loop
+  var cityMetrics = {"Plano, TX": {county: "Collin County", happiness: 72.3, wellbeing: 7, income_and_employment: 6, community_and_environment: 8}};
+  var cityHomePrice = {"Collin County, Texas": "265300"};
+      let cityWithMetricksObj = Object.entries(cityMetrics);
+      let cityCounty = cityWithMetricksObj[0][1].county;
+          console.log(cityCounty);
+      
+      let cityMetricsCounty = (Object.values(cityMetrics))[0].county;
+          console.log(cityMetricsCounty);
+          console.log(Object.values(cityMetrics)[0]);
+      
+      if (cityCounty.includes(cityMetricsCounty)){
+          Object.values(cityMetrics)[0].medianHomePrice = (Object.values(cityHomePrice));
+            console.log("yes");
+            console.log(cityMetrics);
+      }
+      // else{
+      //     console.log("no");
+      // }
+      
+    
+    
+    </script>
+  </div>
+</body>
+
+</html>
