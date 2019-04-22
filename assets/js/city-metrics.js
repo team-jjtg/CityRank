@@ -329,24 +329,25 @@ CityMetrics.prototype.reset = function() {
 CityMetrics.prototype.stateToST = stateToST;
 CityMetrics.prototype.STtoState = STtoState;
 CityMetrics.prototype.getST = function(state) {
+	console.log("CityMetrics.getST() = state >" + state + "<");
 	return this.stateToST[state];
 }
 CityMetrics.prototype.getState = function(ST) {
 	return this.STtoState[ST];
 }
-CityMetrics.prototype.getCityState = function(item) {
+CityMetrics.prototype.getCityST = function(item) {
 	return Object.keys(item);
 }
 CityMetrics.prototype.getCounty = function(item) {
-	let key = this.getCityState(item);
+	let key = this.getCityST(item);
 	return item[key].county
 }
 CityMetrics.prototype.getHappiness = function(item) {
-	let key = this.getCityState(item);
+	let key = this.getCityST(item);
 	return item[key].happiness
 }
 CityMetrics.prototype.getPolitics = function(item) {
-	let key = this.getCityState(item);
+	let key = this.getCityST(item);
 	return item[key].politics
 }
 CityMetrics.prototype.getPoliticalColor = function(item) {
@@ -355,27 +356,27 @@ CityMetrics.prototype.getPoliticalColor = function(item) {
 	throw new Error("Finish CityMetrics.getPoliticalColor()");
 }
 CityMetrics.prototype.getAffordability = function(item) {
-	let key = this.getCityState(item);
+	let key = this.getCityST(item);
 	return item[key].affordability
 }
 CityMetrics.prototype.getAffordabilityAtIndex = function(index) {
-	let key = this.getCityState(this.getItem(index));
+	let key = this.getCityST(this.getItem(index));
 	if (!this.data[index][key]["politics"]) console.log("CityMetrics.getPolitics(): no affordability field for ", key);
 	return this.data[index][key].affordability;
 }
 CityMetrics.prototype.setAffordabilityAtIndex = function(affordability, index) {
-	let key = this.getCityState(this.getItem(index));
+	let key = this.getCityST(this.getItem(index));
 	console.log("setAffordability key = ", key);
 	this.data[index][key].affordability = affordability;
 }
 CityMetrics.prototype.getPoliticsAtIndex = function(index) {
-	let key = this.getCityState(this.getItem(index));
+	let key = this.getCityST(this.getItem(index));
 	if (!this.data[index][key]["politics"]) console.log("CityMetrics.getPolitics(): no politics field for ", key);
 	return this.data[index][key].politics;
 }
 CityMetrics.prototype.setPoliticsAtIndex = function(demFraction, repFraction, index) {
 	let results = {};
-	let key = this.getCityState(this.getItem(index));
+	let key = this.getCityST(this.getItem(index));
 	results.demFraction = demFraction;
 	results.repFraction = repFraction;
 	this.data[index][key].politics = results;
@@ -407,10 +408,26 @@ CityMetrics.prototype.getCompareHappinessFunctionDescending = function() {
 CityMetrics.prototype.cherryPickFields = function(arrayOfFields, item) {
 	results = {};
 	for (let fieldName of arrayOfFields) {
-		let key = this.getCityState(item);
+		let key = this.getCityST(item);
 		results[fieldName] = item[key][fieldName];
 	}
 	return results;
+}
+CityMetrics.prototype.normalizeToCityST = function(cityState) {
+	let cityST = "";
+	let parts = cityState.split(", ")
+	let state = parts[1];
+	parts[1] = this.getST(state);
+	cityST = parts.join(", ");
+	return cityST;
+}
+CityMetrics.prototype.normalizeToCityState = function(cityST) {
+	let cityState = "";
+	let parts = cityST.split(", ")
+	let st = parts[1];
+	parts[1] = this.getState(st);
+	cityState= parts.join(", ");
+	return cityState;
 }
 
 function UnitTestCityMetrics() {
@@ -419,7 +436,7 @@ function UnitTestCityMetrics() {
 	while (cm.hasMoreItems()) {
 		let index = cm.index;
 		let item = cm.getNextItem();
-		let cityState = cm.getCityState(item);
+		let cityState = cm.getCityST(item);
 		let county = cm.getCounty(item);
 		let happiness = cm.getHappiness(item);
 		console.log(`${cityState} = happiness: ${happiness}  county: ${county}`);
@@ -444,7 +461,6 @@ function UnitTestCityMetrics() {
 		let normalizedItem = {};
 		normalizedItem[cityState] = json;
 		normalizedData.push(normalizedItem);
-
 	}
 	console.log("This is our normalized data ready to upload to firebase-ish");
 	console.log(normalizedData);
@@ -463,8 +479,14 @@ function UnitTestCityMetrics() {
 	console.log("City data sorted by happiness (descending): ", cm.data);
 
 	let st = cm.getST("Alabama");
-	console.log("State abbreviation for Alabama is ", st);
+	console.log("State abbreviation for Alabama is >" + st + "<");
 
-	let ST = cm.getState("AL");
-	console.log("Elaborated state from AL is ", ST);
+	let state = cm.getState("AL");
+	console.log("Elaborated state from AL is >" + state + "<");
+
+	let cityST = cm.normalizeToCityST("Jackson, Mississippi");
+	console.log("Normalizing 'Jackson, Mississippi' to", cityST);
+
+	let cityState = cm.normalizeToCityState(cityST);
+	console.log("Normalizing 'Jackson, MS' to", cityState);
 }
