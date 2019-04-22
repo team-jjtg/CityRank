@@ -83,7 +83,7 @@ let cityMetrics = [
 	{"Rancho Cucamonga, CA": { "county": "San Bernardino County", "happiness": 60.14, "wellbeing": 79, "income_and_employment": 32, "community_and_environment": 68 }},
 	{"Salt Lake City, UT": { "county": "Salt Lake County", "happiness": 60.11, "wellbeing": 80, "income_and_employment": 9, "community_and_environment": 82 }},
 	{"Yonkers, NY": { "county": "Westchester County", "happiness": 60.10, "wellbeing": 45, "income_and_employment": 157, "community_and_environment": 79 }},
-	{"Las Cruces, NM": { "county": "Dona Ana County", "happiness": 60.08, "wellbeing": 33, "income_and_employment": 123, "community_and_environment": 69 }},
+	{"Las Cruces, NM": { "county": "Doqa Ana County", "happiness": 60.08, "wellbeing": 33, "income_and_employment": 123, "community_and_environment": 69 }},
 	{"Rapid City, SD": { "county": "Pennington County", "happiness": 60.07, "wellbeing": 86, "income_and_employment": 30, "community_and_environment": 64 }},
 	{"Dallas, TX": { "county": "Dallas County", "happiness": 59.82, "wellbeing": 35, "income_and_employment": 109, "community_and_environment": 123 }},
 	{"South Burlington, VT": { "county": "Chittenden County", "happiness": 59.81, "wellbeing": 90, "income_and_employment": 63, "community_and_environment": 31 }},
@@ -209,7 +209,7 @@ let stateToST = {
 	"Arkansas": "AR",
 	"California": "CA",
 	"Colorado": "CO",
-	"Connecticut": "CN",
+	"Connecticut": "CT",
 	"Delaware": "DE",
 	"District of Columbia": "DC",
 	"Florida": "FL",
@@ -263,7 +263,7 @@ let STtoState = {
 	"AR": "Arkansas",
 	"CA": "California",
 	"CO": "Colorado",
-	"CN": "Connecticut",
+	"CT": "Connecticut",
 	"DE": "Delaware",
 	"DC": "District of Columbia",
 	"FL": "Florida",
@@ -288,7 +288,7 @@ let STtoState = {
 	"NV": "Nevada",
 	"NH": "New Hampshire",
 	"NJ": "New Jersey",
-	"NM": "NM",
+	"NM": "New Mexico",
 	"NY": "New York",
 	"NC": "North Carolina",
 	"ND": "North Dakota",
@@ -336,11 +336,40 @@ CityMetrics.prototype.getState = function(ST) {
 	return this.STtoState[ST];
 }
 CityMetrics.prototype.getCityST = function(item) {
-	return Object.keys(item);
+	return Object.keys(item).join();
 }
 CityMetrics.prototype.getCounty = function(item) {
 	let key = this.getCityST(item);
 	return item[key].county
+}
+CityMetrics.prototype.getCountyST = function(item) {
+	let cityST = this.getCityST(item);
+	let county = this.getCounty(item);
+	let parts = cityST.split(", ");
+	parts[0] = county;
+	let countyST = parts.join(", ");
+	return countyST;
+}
+CityMetrics.prototype.getCountyState = function(item) {
+	let cityST = this.getCityST(item);
+	let county = this.getCounty(item);
+	let parts = cityST.split(", ");
+	parts[0] = county;
+	parts[1] = this.getState(parts[1]);
+	let countyState = parts.join(", ");
+	return countyState;
+}
+CityMetrics.prototype.getCountyStateForCountyPolitics = function(item) {
+	let cityST = this.getCityST(item);
+	let county = this.getCounty(item);
+	let parts = cityST.split(", ");
+	if (county == "Lucie County") {
+		county = "St. Lucie County"
+	}
+	parts[0] = county;
+	parts[1] = this.getState(parts[1]);
+	let countyState = parts.join(", ");
+	return countyState;
 }
 CityMetrics.prototype.getHappiness = function(item) {
 	let key = this.getCityST(item);
@@ -373,6 +402,10 @@ CityMetrics.prototype.getPoliticsAtIndex = function(index) {
 	let key = this.getCityST(this.getItem(index));
 	if (!this.data[index][key]["politics"]) console.log("CityMetrics.getPolitics(): no politics field for ", key);
 	return this.data[index][key].politics;
+}
+CityMetrics.prototype.setPoliticsJsonAtIndex = function(politicsJson, index) {
+	let key = this.getCityST(this.getItem(index));
+	this.data[index][key].politics = politicsJson;
 }
 CityMetrics.prototype.setPoliticsAtIndex = function(demFraction, repFraction, index) {
 	let results = {};
@@ -431,6 +464,8 @@ CityMetrics.prototype.normalizeToCityState = function(cityST) {
 }
 
 function UnitTestCityMetrics() {
+	cp = new CountyPolitics();
+	let cpFields = ["rep16_frac", "dem16_frac"];
 	cm = new CityMetrics();
 	let normalizedData = [];
 	while (cm.hasMoreItems()) {
@@ -444,10 +479,10 @@ function UnitTestCityMetrics() {
 		console.log("setting affordability to 100000");
 		cm.setAffordabilityAtIndex(100000, index);
 
-		console.log("setting politics to {demFraction: 60, repFraction: 40}");
-		let demFraction = 60;
-		let repFraction = 40;
-		cm.setPoliticsAtIndex(demFraction, repFraction, index);
+		let politicalCountyState = cm.getCountyStateForCountyPolitics(item);
+		console.log("setting politics for ", cityState, county, politicalCountyState);
+		politicalJson = cp.cherryPickFields(cpFields, politicalCountyState);
+		cm.setPoliticsJsonAtIndex(politicalJson, index);
 
 		let politics = JSON.stringify(cm.getPoliticsAtIndex(index));
 		let affordability = cm.getAffordabilityAtIndex(index);
@@ -461,6 +496,10 @@ function UnitTestCityMetrics() {
 		let normalizedItem = {};
 		normalizedItem[cityState] = json;
 		normalizedData.push(normalizedItem);
+
+		let countyST = cm.getCountyST(item);
+		console.log(`countyST = ${countyST}`);
+		console.log(`politicalCountyState = ${politicalCountyState}`);
 	}
 	console.log("This is our normalized data ready to upload to firebase-ish");
 	console.log(normalizedData);

@@ -7,7 +7,7 @@
 // This is historical data of record and not prone to changing,
 // making it less compelling to pull from an endpoint at runtime.
 
-CountyToPolitics.prototype.data = {
+CountyPolitics.prototype.data = {
         "Cherokee County, Alabama": {
         "dem08_frac": 23.66341713699333,
         "dem12_frac": 21.772875816993466,

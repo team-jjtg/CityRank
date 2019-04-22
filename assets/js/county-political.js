@@ -18,14 +18,15 @@
 // trending statements.
 //
 
-function CountyToPolitics() {}
-CountyToPolitics.prototype.apiMethod = "GET";
-CountyToPolitics.prototype.url = "https://public.opendatasoft.com/api/records/1.0/search/";
-// CountyToPolitics.prototype.params = "&facet=county&rows=3143"; // This represents 100 MB of data :-) since it's every county in the country.
-CountyToPolitics.prototype.params = "&facet=county&rows=10";	// Limit the data during test.
-CountyToPolitics.prototype.key = "";
-CountyToPolitics.prototype.electionDataset = "usa-2016-presidential-election-by-county";
-//CountyToPolitics.prototype.data = [];
+function CountyPolitics() {}
+CountyPolitics.prototype.apiMethod = "GET";
+CountyPolitics.prototype.url = "https://public.opendatasoft.com/api/records/1.0/search/";
+// CountyPolitics.prototype.params = "&facet=county&rows=3143"; // This represents 100 MB of data :-) since it's every county in the country.
+CountyPolitics.prototype.params = "&facet=county&rows=10";	// Limit the data during test.
+CountyPolitics.prototype.key = "";
+CountyPolitics.prototype.electionDataset = "usa-2016-presidential-election-by-county";
+//This is now statically defined in county-political-json.js for performance reasons.
+//CountyPolitics.prototype.data = {};
     // "Cherokee County, Alabama": {
     //     "rep16_frac": 0,
     //     "dem16_frac": 0,
@@ -41,16 +42,23 @@ CountyToPolitics.prototype.electionDataset = "usa-2016-presidential-election-by-
     //     "green08_frac": 0
     // },
     // ..
-CountyToPolitics.prototype.rawJson = [];
-CountyToPolitics.prototype.getQueryUrl = function() {
+CountyPolitics.prototype.rawJson = [];
+CountyPolitics.prototype.getQueryUrl = function() {
     let results = `${this.url}?dataset=${this.electionDataset}${this.params}${this.key}`;
-    console.log("CountyToPolitics.getQueryUrl() results = ", results);
+    console.log("CountyPolitics.getQueryUrl() results = ", results);
     return results;
 }
-CountyToPolitics.prototype.setElectionDataset = function(electionDataset) {
+CountyPolitics.prototype.cherryPickFields = function(arrayOfFields, countyState) {
+	results = {};
+	for (let fieldName of arrayOfFields) {
+		results[fieldName] = this.data[countyState][fieldName];
+	}
+	return results;
+}
+CountyPolitics.prototype.setElectionDataset = function(electionDataset) {
     this.electionDataset = electionDataset;
 }
-CountyToPolitics.prototype.getPoliticsCallback = function(electionDataset = this.electionDataset) {
+CountyPolitics.prototype.getPoliticsCallback = function(electionDataset = this.electionDataset) {
     let queryUrl = this.getQueryUrl(electionDataset);
     let that = this;
     function innerCallback() {
@@ -61,11 +69,11 @@ CountyToPolitics.prototype.getPoliticsCallback = function(electionDataset = this
         }).done(function(response) {
             // Verify we're getting reasonable data back from the endpoint.
             var nLength = response.nhits;
-            console.log("CountyToPolitics.getPoliticsCallback() nLength = ", nLength);
+            console.log("CountyPolitics.getPoliticsCallback() nLength = ", nLength);
             if (nLength > 0) {
                 that.rawJson = response.records;
                 if (!that.rawJson) {
-                    console.log("CountyToPolitics.getPoliticsCallback() new records came back");
+                    console.log("CountyPolitics.getPoliticsCallback() new records came back");
                 } else {
                     console.log("CountToPolitics.getPoliticsCallback() got data.");
                     console.log("CountToPolitics.getPoliticsCallback() raw political json = ", that.rawJson);
@@ -77,6 +85,21 @@ CountyToPolitics.prototype.getPoliticsCallback = function(electionDataset = this
         return false;   
     }
     return innerCallback;
+}
+
+function UnitTestCountyPolitics() {
+    let cp = new CountyPolitics();
+    let fields = ["rep16_frac", "dem16_frac"];
+    let json = cp.cherryPickFields(fields, "Montgomery County, Alabama");
+    console.log("UnitTestCountyPolitics: ", json);
+
+    let cm = new CityMetrics();
+    let item = cm.getItem(134);
+    let countyState = cm.getCountyStateForCountyPolitics(item);
+    console.log("countyState = ", countyState);
+    // let countyState = cm.getCountyState(item);
+    politicalJson = JSON.stringify(cp.cherryPickFields(fields, countyState));
+    console.log(`(${countyState}) city politics for ${cm.getCityST(item)} = ${politicalJson}`);
 }
 
 
