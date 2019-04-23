@@ -395,7 +395,6 @@ CityMetrics.prototype.getAffordabilityAtIndex = function(index) {
 }
 CityMetrics.prototype.setAffordabilityAtIndex = function(affordability, index) {
 	let key = this.getCityST(this.getItem(index));
-	console.log("setAffordability key = ", key);
 	this.data[index][key].affordability = affordability;
 }
 CityMetrics.prototype.getPoliticsAtIndex = function(index) {
