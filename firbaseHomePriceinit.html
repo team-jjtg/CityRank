@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Firebase Init</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h1>Push to Firebase</h1>
+
+      <!-- This button will trigger our post call -->
+      <input id="fire-push" type="submit" value="Push to Firebase">
+    </form>
+
+    <!-- We'll be dumping our JSON contents in here -->
+    <div id="home-view"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+    <script type="text/javascript">
+
+       
+
+var config = {
+    apiKey: "AIzaSyDjRdLIPTMyLiDV4IhEb73nwA4pRGk0pRc",
+    authDomain: "project-jjtg.firebaseapp.com",
+    databaseURL: "https://project-jjtg.firebaseio.com",
+    projectId: "project-jjtg",
+    storageBucket: "project-jjtg.appspot.com",
+    messagingSenderId: "944126494599"
+  };
+  firebase.initializeApp(config);
+
+  var database = firebase.database();
+// -----------------------------------------------------
+    $("#fire-push").on("click", function(e) {
+        e.preventDefault();
+        getData();
+    });
+
+    function getData() {
+    var queryURL = "https://api.census.gov/data/2017/acs/acs5/profile?get=DP04_0089E,NAME&for=county:*";
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+     
+      //Want to scan the response JSON and look for a containing zip code based on our user search and then pull that response index and its [0] to show house price
+     
+        var specificCounty = 300;
+        //function checkZip(response) {
+         // return response == 78613;
+
+        homePriceObject = {
+        countyId : response[specificCounty][1],
+        stateCodeId : response[specificCounty][2],
+        countyCodeId : response[specificCounty][3],
+        medianHPrice : response[specificCounty][0]
+        }
+        logFunction(homePriceObject)
+        database.ref().push(homePriceObject);
+    });
+};
+function logFunction(objectThing){
+    console.log(objectThing)
+
+}
+
+
+// -----------------------------------------------------
+      
+    </script>
+  </div>
+</body>
+
+</html>
