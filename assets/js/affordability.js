@@ -24,7 +24,7 @@ CountyAffordabiity.prototype.getCountyAffordabiityCallback = function(electionDa
 			// all these array entries into a single object.
 
             for (let i = 0; i < response.length; i++) {
-				let medianHomeprice = response[i][0];	// Using median home price as proxy for affordabiltiy.
+				let medianHomeprice = parseInt(response[i][0]);	// Using median home price as proxy for affordabiltiy.
 				let countyState = response[i][1];
 				// Allow affordability to be looked-up by 'county, state' key.
                 that.affordabilityByCounty[countyState] = medianHomeprice;
@@ -62,7 +62,7 @@ function UnitTestCountyAffordabiity() {
 		let happiness = cm.getHappiness(item);
 		let affordability = ca.getAffordability(cm.getCountyState(item));
 
-		cm.setCountyAffordabiityAtIndex(affordability, index);
+		cm.setAffordabilityAtIndex(affordability, index);
 
 		let politicalCountyState = cm.getCountyStateForCountyPolitics(item);
 		politicalJson = cp.cherryPickFields(cpFields, politicalCountyState);
