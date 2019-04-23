@@ -52,51 +52,50 @@
             <div class="text-center">
                 <button type="button" id ="start" class="btn blue-gradient">GET STARTED</button>
             </div>
-    </div> 
+        </div> 
     </div>       
 </div>
     
-
+<!----Category page-->
 <section id= "category">
-        
     <div class="title-container">
-            <div class="text-center">
-                <h3>City Rank</h3>
-            </div>
+        <div class="text-center">
+            <h3>City Rank</h3>
+        </div>
     </div>
 </br>
 </br>
 <!------Happiness------>
 <div class="container">
     <div class="happy">
-    <div class="col-sm-8-mx-auto">
-        <div class="row">
+        <div class="col-sm-8-mx-auto">
+            <div class="row">
                 <div class="col">
                     <label for="level-of-happiness"><h2>Level of Happiness</h2></label>
                 <input id="happiness"class="custom-range" value="0" min="0" max="100" type="range">
-                <i class="fas fa-frown float-left fa-2x"></i>
-                <i class="far fa-smile float-right fa-2x"></i>
+                    <i class="fas fa-frown float-left fa-2x"></i>
+                    <i class="far fa-smile float-right fa-2x"></i>
+                </div>
             </div>
         </div>
-        </div>
-      </div>
     </div>
+</div>
 <!------------>
 
 <!-------Political Affiliation-->
 <div class="container">
     <div class="politics">
-    <div class="col-sm-8 mx-auto">
-        <div class="row">
+        <div class="col-sm-8 mx-auto">
+            <div class="row">
                 <div class="col">
-                        <label for="politics-affiliation"><h2>Political Affiliation</h2></label>
-                        <input type="range" class="custom-range" id="political-affiliation">
-                        <i class="fas fa-democrat float-left fa-2x blue-text pr-3" aria-hidden="true"></i>
-                        <i class="fas fa-republican float-right fa-2x red-text pr-3" aria-hidden="true"></i>
+                    <label for="politics-affiliation"><h2>Political Affiliation</h2></label>
+                    <i class="fas fa-democrat float-left fa-2x blue-text pr-3" aria-hidden="true"></i>
+                <input type="range" class="custom-range" id="political-affiliation">
+                    <i class="fas fa-republican float-right fa-2x red-text pr-3" aria-hidden="true"></i>
+                </div>
+            </div>
         </div>
     </div>
-    </div>
-</div>
 </div>
 <!------------------------>
 
@@ -105,54 +104,72 @@
     <div class="cost-of-living">
         <div class="col-sm-8 mx-auto">
             <div class="row">
-                    <div class="col">
-                            <label for="cost-of-living"><h2>Cost of Living</h2></label>
-                                <input type="range" min="0" max="100" class="custom-range" id="cost-of-living" />
-                            <i class="fas fa-dollar-sign float-right fa-2x green-text pr-3" aria-hidden="true"></i>
-                            <i class="fas fa-dollar-sign float-right fa-2x green-text pr-3" aria-hidden="true"></i>
-                            <i class="fas fa-dollar-sign float-right fa-2x green-text pr-3" aria-hidden="true"></i>
-                            <i class="fas fa-dollar-sign float-left fa-2x green-text pr-3" aria-hidden="true"></i>
+                <div class="col">
+                    <label for="cost-of-living"><h2>Cost of Living</h2></label>
+                <input type="range" min="0" max="100" class="custom-range" id="cost-of-living" />
+                    <i class="fas fa-dollar-sign float-right fa-2x green-text pr-3" aria-hidden="true"></i>
+                    <i class="fas fa-dollar-sign float-right fa-2x green-text pr-3" aria-hidden="true"></i>
+                    <i class="fas fa-dollar-sign float-right fa-2x green-text pr-3" aria-hidden="true"></i>
+                    <i class="fas fa-dollar-sign float-left fa-2x green-text pr-3" aria-hidden="true"></i>
+                </div>
             </div>
         </div>
-        </div>
     </div>
-    </div>
+</div>
 <!------------->
 
 <!----Job Outlook-->
 <div class= "container">
-        <div class="job-outlook">
-                <div class="col-sm-8 mx-auto">
-                    <div class="row">
-                            <div class="col">
-                                    <label for="job-outlook"><h2>Job Outlook</h2></label>
-                                    <div class="md-form">
-                                            <i class="fas fa-user prefix fa-2x"></i>
-                                            <input type="text" id="job-outlook" class="form-control">
-                                            <label for="inputIconEx2">Searching For Job...</label>
-                                          </div>
-                                          <div class="text-center">
-                                          <button class="btn blue-gradient">Submit</button>
-                                        </div>
-                            </div>
-                    </div>
+    <div class="job-outlook">
+        <div class="col-sm-8 mx-auto">
+            <div class="row">
+                <div class="col">
+                    <label for="job-outlook"><h2>Job Outlook</h2></label>
+                        <div class="md-form">
+                            <i class="fas fa-user prefix fa-2x"></i>
+                            <input type="text" id="job-outlook" class="form-control">
+                                <label for="inputIconEx2">Searching For Job...</label>
+                        </div>
+                        <div class="text-center">
+                            <button type="button" class="btn blue-gradient" id="submit">Submit</button>
+                        </div>
                 </div>
+            </div>
         </div>
+    </div>
 </div>
+</section>
 <!----------------->
 
-</section>
 
+<!----Results Page-->
+<div id = "result-page">
+        <div class="title-container">
+            <h3>Results</h3>
+        </div>
+            
+<div class="container">
+    <div class="city1-result">
+        <div class="col-sm-8-mx-auto">
+            <div class="row">
+                <div class="col">
+                            <p>Display Results Here</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>        
+</div>       
 
 </body>
 
 <!----Footer-->
 <footer class="page-footer font-small black">
 
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3">© 2018 Copyright:
-          <a href="https://github.com/team-jjtg/CityRank"> Team-JJTG</a>
-        </div>      
-      </footer>
+<!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+        <a href="https://github.com/team-jjtg/CityRank"> Team-JJTG</a>
+    </div>      
+</footer>
 
 </html>
