@@ -83,7 +83,7 @@ let cityMetrics = [
 	{"Rancho Cucamonga, CA": { "county": "San Bernardino County", "happiness": 60.14, "wellbeing": 79, "income_and_employment": 32, "community_and_environment": 68 }},
 	{"Salt Lake City, UT": { "county": "Salt Lake County", "happiness": 60.11, "wellbeing": 80, "income_and_employment": 9, "community_and_environment": 82 }},
 	{"Yonkers, NY": { "county": "Westchester County", "happiness": 60.10, "wellbeing": 45, "income_and_employment": 157, "community_and_environment": 79 }},
-	{"Las Cruces, NM": { "county": "Dona Ana County", "happiness": 60.08, "wellbeing": 33, "income_and_employment": 123, "community_and_environment": 69 }},
+	{"Las Cruces, NM": { "county": "Doqa Ana County", "happiness": 60.08, "wellbeing": 33, "income_and_employment": 123, "community_and_environment": 69 }},
 	{"Rapid City, SD": { "county": "Pennington County", "happiness": 60.07, "wellbeing": 86, "income_and_employment": 30, "community_and_environment": 64 }},
 	{"Dallas, TX": { "county": "Dallas County", "happiness": 59.82, "wellbeing": 35, "income_and_employment": 109, "community_and_environment": 123 }},
 	{"South Burlington, VT": { "county": "Chittenden County", "happiness": 59.81, "wellbeing": 90, "income_and_employment": 63, "community_and_environment": 31 }},
@@ -202,6 +202,114 @@ let cityMetrics = [
 	{"Detroit, MI": { "county": "Monroe County", "happiness": 29.19, "wellbeing": 181, "income_and_employment": 181, "community_and_environment": 181 }}
 ];
 
+let stateToST = {
+	"Alabama": "AL",
+	"Alaska": "AK",
+	"Arizona": "AZ",
+	"Arkansas": "AR",
+	"California": "CA",
+	"Colorado": "CO",
+	"Connecticut": "CT",
+	"Delaware": "DE",
+	"District of Columbia": "DC",
+	"Florida": "FL",
+	"Georgia": "GA",
+	"Hawaii": "HI",
+	"Idaho": "ID",
+	"Illinois": "IL",
+	"Indiana": "IN",
+	"Iowa": "IA",
+	"Kansas": "KS",
+	"Kentucky": "KY",
+	"Louisiana": "LA",
+	"Maine": "ME",
+	"Maryland": "MD",
+	"Massachusetts": "MA",
+	"Michigan": "MI",
+	"Minnesota": "MN",
+	"Mississippi": "MS",
+	"Missouri": "MO",
+	"Montana": "MT",
+	"Nebraska": "NE",
+	"Nevada": "NV",
+	"New Hampshire": "NH",
+	"New Jersey": "NJ",
+	"New Mexico": "NM",
+	"New York": "NY",
+	"North Carolina": "NC",
+	"North Dakota": "ND",
+	"Ohio": "OH",
+	"Oklahoma": "OK",
+	"Oregon": "OR",
+	"Pennsylvania": "PA",
+	"Rhode Island": "RI",
+	"South Carolina": "SC",
+	"South Dakota": "SD",
+	"Tennessee": "TN",
+	"Texas": "TX",
+	"Utah": "UT",
+	"Vermont": "VT",
+	"Virginia": "VA",
+	"Washington": "WA",
+	"West Virginia": "WV",
+	"Wisconsin": "WI",
+	"Wyoming": "WY"
+};
+
+let STtoState = {
+	"AL": "Alabama",
+	"AK": "Alaska",
+	"AZ": "Arizona",
+	"AR": "Arkansas",
+	"CA": "California",
+	"CO": "Colorado",
+	"CT": "Connecticut",
+	"DE": "Delaware",
+	"DC": "District of Columbia",
+	"FL": "Florida",
+	"GA": "Georgia",
+	"HI": "Hawaii",
+	"ID": "Idaho",
+	"IL": "Illinois",
+	"IN": "Indiana",
+	"IA": "Iowa",
+	"KS": "Kansas",
+	"KY": "Kentucky",
+	"LA": "Louisiana",
+	"ME": "Maine",
+	"MD": "Maryland",
+	"MA": "Massachusetts",
+	"MI": "Michigan",
+	"MN": "Minnesota",
+	"MS": "Mississippi",
+	"MO": "Missouri",
+	"MT": "Montana",
+	"NE": "Nebraska",
+	"NV": "Nevada",
+	"NH": "New Hampshire",
+	"NJ": "New Jersey",
+	"NM": "New Mexico",
+	"NY": "New York",
+	"NC": "North Carolina",
+	"ND": "North Dakota",
+	"OH": "Ohio",
+	"OK": "Oklahoma",
+	"OR": "Oregon",
+	"PA": "Pennsylvania",
+	"RI": "Rhode Island",
+	"SC": "South Carolina",
+	"SD": "South Dakota",
+	"TN": "Tennessee",
+	"TX": "Texas",
+	"UT": "Utah",
+	"VT": "Vermont",
+	"VA": "Virginia",
+	"WA": "Washington",
+	"WV": "West Virginia",
+	"WI": "Wisconsin",
+	"WY": "Wyoming"
+};
+
 function CityMetrics() {
 	this.index = 0;
 };
@@ -218,19 +326,57 @@ CityMetrics.prototype.getItem = function(index) {
 CityMetrics.prototype.reset = function() {
 	this.index = 0;
 }
-CityMetrics.prototype.getCityState = function(item) {
-	return Object.keys(item);
+CityMetrics.prototype.stateToST = stateToST;
+CityMetrics.prototype.STtoState = STtoState;
+CityMetrics.prototype.getST = function(state) {
+	console.log("CityMetrics.getST() = state >" + state + "<");
+	return this.stateToST[state];
+}
+CityMetrics.prototype.getState = function(ST) {
+	return this.STtoState[ST];
+}
+CityMetrics.prototype.getCityST = function(item) {
+	return Object.keys(item).join();
 }
 CityMetrics.prototype.getCounty = function(item) {
-	let key = this.getCityState(item);
+	let key = this.getCityST(item);
 	return item[key].county
 }
+CityMetrics.prototype.getCountyST = function(item) {
+	let cityST = this.getCityST(item);
+	let county = this.getCounty(item);
+	let parts = cityST.split(", ");
+	parts[0] = county;
+	let countyST = parts.join(", ");
+	return countyST;
+}
+CityMetrics.prototype.getCountyState = function(item) {
+	let cityST = this.getCityST(item);
+	let county = this.getCounty(item);
+	let parts = cityST.split(", ");
+	parts[0] = county;
+	parts[1] = this.getState(parts[1]);
+	let countyState = parts.join(", ");
+	return countyState;
+}
+CityMetrics.prototype.getCountyStateForCountyPolitics = function(item) {
+	let cityST = this.getCityST(item);
+	let county = this.getCounty(item);
+	let parts = cityST.split(", ");
+	if (county == "Lucie County") {
+		county = "St. Lucie County"
+	}
+	parts[0] = county;
+	parts[1] = this.getState(parts[1]);
+	let countyState = parts.join(", ");
+	return countyState;
+}
 CityMetrics.prototype.getHappiness = function(item) {
-	let key = this.getCityState(item);
+	let key = this.getCityST(item);
 	return item[key].happiness
 }
 CityMetrics.prototype.getPolitics = function(item) {
-	let key = this.getCityState(item);
+	let key = this.getCityST(item);
 	return item[key].politics
 }
 CityMetrics.prototype.getPoliticalColor = function(item) {
@@ -239,27 +385,31 @@ CityMetrics.prototype.getPoliticalColor = function(item) {
 	throw new Error("Finish CityMetrics.getPoliticalColor()");
 }
 CityMetrics.prototype.getAffordability = function(item) {
-	let key = this.getCityState(item);
+	let key = this.getCityST(item);
 	return item[key].affordability
 }
 CityMetrics.prototype.getAffordabilityAtIndex = function(index) {
-	let key = this.getCityState(this.getItem(index));
+	let key = this.getCityST(this.getItem(index));
 	if (!this.data[index][key]["politics"]) console.log("CityMetrics.getPolitics(): no affordability field for ", key);
 	return this.data[index][key].affordability;
 }
 CityMetrics.prototype.setAffordabilityAtIndex = function(affordability, index) {
-	let key = this.getCityState(this.getItem(index));
+	let key = this.getCityST(this.getItem(index));
 	console.log("setAffordability key = ", key);
 	this.data[index][key].affordability = affordability;
 }
 CityMetrics.prototype.getPoliticsAtIndex = function(index) {
-	let key = this.getCityState(this.getItem(index));
+	let key = this.getCityST(this.getItem(index));
 	if (!this.data[index][key]["politics"]) console.log("CityMetrics.getPolitics(): no politics field for ", key);
 	return this.data[index][key].politics;
 }
+CityMetrics.prototype.setPoliticsJsonAtIndex = function(politicsJson, index) {
+	let key = this.getCityST(this.getItem(index));
+	this.data[index][key].politics = politicsJson;
+}
 CityMetrics.prototype.setPoliticsAtIndex = function(demFraction, repFraction, index) {
 	let results = {};
-	let key = this.getCityState(this.getItem(index));
+	let key = this.getCityST(this.getItem(index));
 	results.demFraction = demFraction;
 	results.repFraction = repFraction;
 	this.data[index][key].politics = results;
@@ -291,18 +441,37 @@ CityMetrics.prototype.getCompareHappinessFunctionDescending = function() {
 CityMetrics.prototype.cherryPickFields = function(arrayOfFields, item) {
 	results = {};
 	for (let fieldName of arrayOfFields) {
-		let key = this.getCityState(item);
+		let key = this.getCityST(item);
 		results[fieldName] = item[key][fieldName];
 	}
 	return results;
 }
+CityMetrics.prototype.normalizeToCityST = function(cityState) {
+	let cityST = "";
+	let parts = cityState.split(", ")
+	let state = parts[1];
+	parts[1] = this.getST(state);
+	cityST = parts.join(", ");
+	return cityST;
+}
+CityMetrics.prototype.normalizeToCityState = function(cityST) {
+	let cityState = "";
+	let parts = cityST.split(", ")
+	let st = parts[1];
+	parts[1] = this.getState(st);
+	cityState= parts.join(", ");
+	return cityState;
+}
 
 function UnitTestCityMetrics() {
+	cp = new CountyPolitics();
+	let cpFields = ["rep16_frac", "dem16_frac"];
 	cm = new CityMetrics();
+	let normalizedData = [];
 	while (cm.hasMoreItems()) {
 		let index = cm.index;
 		let item = cm.getNextItem();
-		let cityState = cm.getCityState(item);
+		let cityState = cm.getCityST(item);
 		let county = cm.getCounty(item);
 		let happiness = cm.getHappiness(item);
 		console.log(`${cityState} = happiness: ${happiness}  county: ${county}`);
@@ -310,10 +479,10 @@ function UnitTestCityMetrics() {
 		console.log("setting affordability to 100000");
 		cm.setAffordabilityAtIndex(100000, index);
 
-		console.log("setting politics to {demFraction: 60, repFraction: 40}");
-		let demFraction = 60;
-		let repFraction = 40;
-		cm.setPoliticsAtIndex(demFraction, repFraction, index);
+		let politicalCountyState = cm.getCountyStateForCountyPolitics(item);
+		console.log("setting politics for ", cityState, county, politicalCountyState);
+		politicalJson = cp.cherryPickFields(cpFields, politicalCountyState);
+		cm.setPoliticsJsonAtIndex(politicalJson, index);
 
 		let politics = JSON.stringify(cm.getPoliticsAtIndex(index));
 		let affordability = cm.getAffordabilityAtIndex(index);
@@ -324,7 +493,17 @@ function UnitTestCityMetrics() {
 
 		let json = cm.cherryPickFields(["happiness", "politics"], item);
 		console.log("cherry picking ", cityState, "json = ", json);
+		let normalizedItem = {};
+		normalizedItem[cityState] = json;
+		normalizedData.push(normalizedItem);
+
+		let countyST = cm.getCountyST(item);
+		console.log(`countyST = ${countyST}`);
+		console.log(`politicalCountyState = ${politicalCountyState}`);
 	}
+	console.log("This is our normalized data ready to upload to firebase-ish");
+	console.log(normalizedData);
+	
 	// IMPORTANT: You must call this method if you iterate over the list of
 	//            cities multiple times (i.e., between iterations)
 	//            otherwise the internally maintained index will not be reset.
@@ -337,4 +516,16 @@ function UnitTestCityMetrics() {
 
 	cm.data.sort(cm.getCompareHappinessFunctionDescending());
 	console.log("City data sorted by happiness (descending): ", cm.data);
+
+	let st = cm.getST("Alabama");
+	console.log("State abbreviation for Alabama is >" + st + "<");
+
+	let state = cm.getState("AL");
+	console.log("Elaborated state from AL is >" + state + "<");
+
+	let cityST = cm.normalizeToCityST("Jackson, Mississippi");
+	console.log("Normalizing 'Jackson, Mississippi' to", cityST);
+
+	let cityState = cm.normalizeToCityState(cityST);
+	console.log("Normalizing 'Jackson, MS' to", cityState);
 }
