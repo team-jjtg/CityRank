@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+
+    <!--Add in the bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!--Don't forget to reference jQuery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+    <div class = "container">
+        <h1>This repo is testing the algorithm for the CityRank project. </h1>
+        <br>
+
+        
+        <!--Creating the table which stores the CityRank-->
+        <div class = "row">
+            <div class = "col-md-12">
+                <div class="card mb-4">
+                    <div class="card-header">Your recommended cities</div>
+                        <div class="card-body">
+                        <table class="table table-sm table-hover" id='happiness-cities'>
+                            <thead>
+                            <tr>
+                                <th scope="col">Ranking</th>
+                                <th scope="col">City Name</th>
+                                <th scope="col">Happiness Rating</th>
+                                <th scope="col">Distance from your inputted value</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <!--Enter the happiness metric-->
+                <div class="card mb-4">
+                <div class="card-header">Enter your Happiness Level</div>
+                <div class="card-body">
+        
+                    <!-- Entry Form -->
+                    <form>
+                    <div class="form-group">
+                        <label for="happiness">Happiness Level</label>
+                        <input class="form-control" id="happy" type="text">
+                    </div>
+                    
+                    <button class="btn btn-primary float-left" id="happy-button">Submit</button>
+                    </form>
+        
+                </div>
+                </div>
+            </div>
+            </div>
+    </div>
+
+
+
+    <script src = "assets/cityRankAlgorithm.js"></script>
+</body>
+</html>
