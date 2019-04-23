@@ -1,25 +1,40 @@
 body, html {
-    height: 100%;
-    background-image: url("../images/light.jpg") ;
-    background-color: #cccccc;
+    background-image: url("../images/light.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .title-container {
     padding: 10px;
     margin: 10px;
-    background-image: url("../images/title.jpg") ;
+    /* background-image: url("../images/title.jpg") ; */
+    background-color: black;
+    background-size: cover;
+    background-position: center;
+}
+.start-container {
+    padding: 10px;
+    margin: 10px;
+    /* background-image: url("../images/title.jpg") ; */
+    background-color: black;
     background-size: cover;
     background-position: center;
 }
 h1 {
     align-content: center;
     color: white;
-    padding: auto 0;
-    margin: auto 0;
+    background-color: black;
+    padding:10px;
+    margin: 10px;
     text-align: center;
-    font-family: 'Cute Font', cursive;
+    font-family: 'Oswald', sans-serif;
     font-size: 200px;
-
+}
+p {
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    color: black;
+    text-align: center;
 }
 h2 {
     padding: auto;
@@ -28,20 +43,42 @@ h2 {
     color: black;
     font-family: 'Oswald', sans-serif;
 }
+h3 {
+    align-content: center;
+    color: white;
+    background-color: black;
+    padding:10px;
+    margin: 10px;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 300px;
+}
+.landing-window {
+    padding: 4rem 2rem;   
+    margin-bottom: 2rem;
+    border-radius: .3rem;
+    align-content: center;
+    position: relative;
+    background-color: whitesmoke; 
+    box-shadow: 0px 0px 10px black;
+
+}
 .container {
     padding: 4rem 2rem;   
     margin-bottom: 2rem;
     border-radius: .3rem;
     align-content: center;
     position: relative;
-    background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
-    background: rgba(204, 204, 204, 0.5);
+    background-color: whitesmoke; 
+    box-shadow: 0px 0px 10px black;
 }
 .btn {
-    
-    margin: auto;
     padding: auto; 
-    text-align: center;
+    width: 30%;
+    margin-left: 30%;
+    margin-right: 30%;
+    display: block;
+    align-content: center;
 }
 #total {
     float: left;

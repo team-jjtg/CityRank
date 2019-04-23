@@ -9,58 +9,73 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.1/bootstrap-slider.js"></script>
-    <link rel='stylesheet' media="screen" type='text/css' href="images.css" /> 
 
 
     <!----MDB LINKS CSS----->
     <!-- Font Awesome -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-<!-- Bootstrap core CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-<!-- Material Design Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <!-- JQuery -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!-- Bootstrap tooltips -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-<!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<!-- MDB core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/js/mdb.min.js"></script>
-                <!------->
-                <link href="https://fonts.googleapis.com/css?family=Cute+Font|Oswald" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/css/mdb.min.css" rel="stylesheet">
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    <title>City Rank</title>
+ <!----Google Fonts--->
+    <link href="https://fonts.googleapis.com/css?family=Cute+Font|Oswald" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+
+<title>City Rank</title>
 </head>
 
+<body>
     <!-- Optional JavaScript -->
 <script type= "text/javascript" src = "assets/js/app.js"></script>
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-<body>
-
-    <div class="title-container">
-        <h1>City Rank</h1>
-    </div>
+<!----Landing Page-->
+<div id="landing-window">
+    <div class="container">
+        <div class="row rows">
+            <div class="col-sm">
+            <h1>Welcome to City Rank</h1>
+                <p>Considering a move but not sure which cities are your best bet?
+                Explore your options by sharing what's important to you and we'll offer some informed choices.
+                We'll start by answering a few questions to get an idea of your priorties.
+                </p>
+            </div>
+        </div>
+            <div class="text-center">
+                <button type="button" id ="start" class="btn blue-gradient">GET STARTED</button>
+            </div>
+    </div> 
+    </div>       
+</div>
     
-</br>
-</br>
 
-<section class= "attr-form">
+<section id= "category">
+        
+    <div class="title-container">
+            <div class="text-center">
+                <h3>City Rank</h3>
+            </div>
+    </div>
+</br>
+</br>
 <!------Happiness------>
 <div class="container">
-        <div class="happy">
-        <div class="col-sm-8-mx-auto">
-            <div class="row">
+    <div class="happy">
+    <div class="col-sm-8-mx-auto">
+        <div class="row">
                 <div class="col">
                     <label for="level-of-happiness"><h2>Level of Happiness</h2></label>
-            <input type="range" class="custom-range" id="happy">
-            <i class="fas fa-frown float-left fa-2x"></i>
-            <i class="far fa-smile float-right fa-2x"></i>
+                <input id="happiness"class="custom-range" value="0" min="0" max="100" type="range">
+                <i class="fas fa-frown float-left fa-2x"></i>
+                <i class="far fa-smile float-right fa-2x"></i>
             </div>
         </div>
         </div>
@@ -85,7 +100,7 @@
 </div>
 <!------------------------>
 
-<!-----Job Outlook-->
+<!-----Cost of Living-->
 <div class= "container">
     <div class="cost-of-living">
         <div class="col-sm-8 mx-auto">
@@ -104,7 +119,7 @@
     </div>
 <!------------->
 
-<!----Cost of Living-->
+<!----Job Outlook-->
 <div class= "container">
         <div class="job-outlook">
                 <div class="col-sm-8 mx-auto">
@@ -116,6 +131,9 @@
                                             <input type="text" id="job-outlook" class="form-control">
                                             <label for="inputIconEx2">Searching For Job...</label>
                                           </div>
+                                          <div class="text-center">
+                                          <button class="btn blue-gradient">Submit</button>
+                                        </div>
                             </div>
                     </div>
                 </div>
@@ -123,12 +141,18 @@
 </div>
 <!----------------->
 
-    <button class="btn blue-gradient">Submit</button>
-
 </section>
 
 
 </body>
 
+<!----Footer-->
+<footer class="page-footer font-small black">
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2018 Copyright:
+          <a href="https://github.com/team-jjtg/CityRank"> Team-JJTG</a>
+        </div>      
+      </footer>
 
 </html>
