@@ -36,7 +36,7 @@ let cityMetrics = [
 	{"Pearl City, HI": { "county": "Honolulu County", "happiness": 66.77, "wellbeing": 2, "income_and_employment": 147, "community_and_environment": 15 }},
 	{"Glendale, CA": { "county": "Los Angeles County", "happiness": 66.25, "wellbeing": 27, "income_and_employment": 102, "community_and_environment": 12 }},
 	{"San Diego, CA": { "county": "San Diego County", "happiness": 66.01, "wellbeing": 8, "income_and_employment": 36, "community_and_environment": 46 }},
-	{"St. Paul, MN": { "county": "Ramsey County", "happiness": 65.79, "wellbeing": 18, "income_and_employment": 70, "community_and_environment": 66 }},
+	{"St Paul, MN": { "county": "Ramsey County", "happiness": 65.79, "wellbeing": 18, "income_and_employment": 70, "community_and_environment": 66 }},
 	{"Charleston, SC": { "county": "Charleston County", "happiness": 65.48, "wellbeing": 74, "income_and_employment": 5, "community_and_environment": 4 }},
 	{"Gilbert, AZ": { "county": "Maricopa County", "happiness": 65.07, "wellbeing": 54, "income_and_employment": 48, "community_and_environment": 10 }},
 	{"Anaheim, CA": { "county": "Orange County", "happiness": 65.02, "wellbeing": 29, "income_and_employment": 79, "community_and_environment": 34 }},
@@ -62,7 +62,7 @@ let cityMetrics = [
 	{"Fort Worth, TX": { "county": "Tarrant County", "happiness": 62.35, "wellbeing": 44, "income_and_employment": 90, "community_and_environment": 54 }},
 	{"Burlington, VT": { "county": "Chittenden County", "happiness": 62.31, "wellbeing": 53, "income_and_employment": 10, "community_and_environment": 120 }},
 	{"Peoria, AZ": { "county": "Maricopa County", "happiness": 62.30, "wellbeing": 65, "income_and_employment": 77, "community_and_environment": 23 }},
-	{"Port St. Lucie, FL": { "county": "Lucie County", "happiness": 61.96, "wellbeing": 76, "income_and_employment": 73, "community_and_environment": 13 }},
+	/*{"Port St. Lucie, FL": { "county": "Lucie County", "happiness": 61.96, "wellbeing": 76, "income_and_employment": 73, "community_and_environment": 13 }},*/
 	{"Boise, ID": { "county": "Ada County", "happiness": 61.94, "wellbeing": 68, "income_and_employment": 19, "community_and_environment": 48 }},
 	{"Garland, TX": { "county": "Dallas County", "happiness": 61.86, "wellbeing": 31, "income_and_employment": 120, "community_and_environment": 103 }},
 	{"Aurora, CO": { "county": "Arapahoe County", "happiness": 61.83, "wellbeing": 26, "income_and_employment": 121, "community_and_environment": 104 }},
@@ -83,13 +83,13 @@ let cityMetrics = [
 	{"Rancho Cucamonga, CA": { "county": "San Bernardino County", "happiness": 60.14, "wellbeing": 79, "income_and_employment": 32, "community_and_environment": 68 }},
 	{"Salt Lake City, UT": { "county": "Salt Lake County", "happiness": 60.11, "wellbeing": 80, "income_and_employment": 9, "community_and_environment": 82 }},
 	{"Yonkers, NY": { "county": "Westchester County", "happiness": 60.10, "wellbeing": 45, "income_and_employment": 157, "community_and_environment": 79 }},
-	{"Las Cruces, NM": { "county": "Doqa Ana County", "happiness": 60.08, "wellbeing": 33, "income_and_employment": 123, "community_and_environment": 69 }},
+	/*{"Las Cruces, NM": { "county": "Doqa Ana County", "happiness": 60.08, "wellbeing": 33, "income_and_employment": 123, "community_and_environment": 69 }},*/
 	{"Rapid City, SD": { "county": "Pennington County", "happiness": 60.07, "wellbeing": 86, "income_and_employment": 30, "community_and_environment": 64 }},
 	{"Dallas, TX": { "county": "Dallas County", "happiness": 59.82, "wellbeing": 35, "income_and_employment": 109, "community_and_environment": 123 }},
 	{"South Burlington, VT": { "county": "Chittenden County", "happiness": 59.81, "wellbeing": 90, "income_and_employment": 63, "community_and_environment": 31 }},
 	{"Virginia Beach, VA": { "county": "Virginia Beach city", "happiness": 59.71, "wellbeing": 73, "income_and_employment": 105, "community_and_environment": 43 }},
 	{"Long Beach, CA": { "county": "Los Angeles County", "happiness": 59.58, "wellbeing": 42, "income_and_employment": 138, "community_and_environment": 108 }},
-	{"Anchorage, AK": { "county": "Anchorage Municipality", "happiness": 59.53, "wellbeing": 84, "income_and_employment": 82, "community_and_environment": 41 }},
+	/*{"Anchorage, AK": { "county": "Anchorage Municipality", "happiness": 59.53, "wellbeing": 84, "income_and_employment": 82, "community_and_environment": 41 }},*/
 	{"Cheyenne, WY": { "county": "Laramie County", "happiness": 59.51, "wellbeing": 78, "income_and_employment": 23, "community_and_environment": 127 }},
 	{"Columbia, MD": { "county": "Howard County", "happiness": 59.47, "wellbeing": 49, "income_and_employment": 101, "community_and_environment": 138 }},
 	{"Mesa, AZ": { "county": "Maricopa County", "happiness": 59.25, "wellbeing": 77, "income_and_employment": 116, "community_and_environment": 47 }},
@@ -148,7 +148,7 @@ let cityMetrics = [
 	{"Oklahoma City, OK": { "county": "Oklahoma County", "happiness": 51.59, "wellbeing": 155, "income_and_employment": 110, "community_and_environment": 38 }},
 	{"Corpus Christi, TX": { "county": "Nueces County", "happiness": 51.50, "wellbeing": 145, "income_and_employment": 15, "community_and_environment": 124 }},
 	{"Winston-Salem, NC": { "county": "Forsyth County", "happiness": 51.44, "wellbeing": 116, "income_and_employment": 118, "community_and_environment": 141 }},
-	{"Juneau, AK": { "county": "Juneau City and Borough", "happiness": 51.21, "wellbeing": 160, "income_and_employment": 3, "community_and_environment": 175 }},
+	/*{"Juneau, AK": { "county": "Juneau City and Borough", "happiness": 51.21, "wellbeing": 160, "income_and_employment": 3, "community_and_environment": 175 }},*/
 	{"Albuquerque, NM": { "county": "Bernalillo County", "happiness": 51.15, "wellbeing": 123, "income_and_employment": 111, "community_and_environment": 150 }},
 	{"Columbus, OH": { "county": "Franklin County", "happiness": 51.14, "wellbeing": 128, "income_and_employment": 133, "community_and_environment": 111 }},
 	{"Bakersfield, CA": { "county": "Kern County", "happiness": 50.98, "wellbeing": 139, "income_and_employment": 74, "community_and_environment": 126 }},
