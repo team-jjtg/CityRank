@@ -27,8 +27,8 @@ h1 {
     padding:10px;
     margin: 10px;
     text-align: center;
-    font-family: 'Oswald', sans-serif;
     font-size: 60px;
+    font-family: 'Bangers', cursive;
 }
 p {
     font-family: 'Oswald', sans-serif;
@@ -50,7 +50,7 @@ h3 {
     padding:10px;
     margin: 10px;
     text-align: center;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Bangers', cursive;
     font-size: 60px;
 }
 #landing-window {
@@ -128,7 +128,7 @@ h3 {
     display: block;
     float: left;
     position: absolute;
-    top: 2.5%; 
+    top: 2.8%; 
 }
 
 /*------------Slider Gradient Color ---------*/
