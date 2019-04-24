@@ -1,13 +1,14 @@
-body, html {
-    background-image: url("../images/light.jpg");
+body {
+    background-image: url("../images/austinSkyline.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
+    height: 100%;
 }
 
 .title-container {
     padding: 10px;
     margin: 10px;
-    /* background-image: url("../images/title.jpg") ; */
     background-color: black;
     background-size: cover;
     background-position: center;
@@ -15,9 +16,7 @@ body, html {
 .start-container {
     padding: 10px;
     margin: 10px;
-    /* background-image: url("../images/title.jpg") ; */
     background-color: black;
-    background-size: cover;
     background-position: center;
 }
 h1 {
@@ -28,7 +27,7 @@ h1 {
     margin: 10px;
     text-align: center;
     font-family: 'Oswald', sans-serif;
-    font-size: 200px;
+    font-size: 60px;
 }
 p {
     font-family: 'Oswald', sans-serif;
@@ -51,48 +50,65 @@ h3 {
     margin: 10px;
     text-align: center;
     font-family: 'Oswald', sans-serif;
-    font-size: 300px;
+    font-size: 60px;
 }
-.landing-window {
+#landing-window {
     padding: 4rem 2rem;   
-    margin-bottom: 2rem;
+    margin-top: 10%;
     border-radius: .3rem;
     align-content: center;
-    position: relative;
     background-color: whitesmoke; 
     box-shadow: 0px 0px 10px black;
 
 }
-.container {
+#result-page {
     padding: 4rem 2rem;   
-    margin-bottom: 2rem;
+    margin-top: 10%;
     border-radius: .3rem;
     align-content: center;
-    position: relative;
+    background-color: whitesmoke; 
+    box-shadow: 0px 0px 10px black;
+}
+.sliderContainers {
+    padding: 4rem 2rem;   
+    margin-bottom: 3%;
+    margin-left: 25%;
+    width: 50%;
+    border-radius: .3rem;
+    display: block;
+    align-content: center;
     background-color: whitesmoke; 
     box-shadow: 0px 0px 10px black;
 }
 .btn {
     padding: auto; 
     width: 30%;
-    margin-left: 30%;
-    margin-right: 30%;
+    border-radius: .3rem;
+    margin-left: 35%;
+    margin-right: 35%;
     display: block;
     align-content: center;
+    color: whitesmoke;
+    font-size: 20px;
+    font-weight: 400;
 }
-#total {
-    float: left;
-    color: blue;
-    margin: auto;
-    padding: auto;
+.footer {
+
+    height: 50x;
+    width: 100%;
+    background-image: none;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-position: 0% 0%;
+    position: fixed;
+    bottom: 0pt;
+    left: 0pt;
+}   
+.footer_contents {
+    height: 50px;
+    width: 100%;
+    margin:auto;
 }
-/*.attr-container {
-    box-sizing: content-box;
-    outline: 2px dashed black;
-    height: 500px;
-    width: 600px;
-    position: center;
-}*/
 
 /*------------Slider Gradient Color ---------*/
 

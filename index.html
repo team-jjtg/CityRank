@@ -1,13 +1,14 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.1/bootstrap-slider.js"></script>
 
 
@@ -21,92 +22,92 @@
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/css/mdb.min.css" rel="stylesheet">
     <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
     <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
- <!----Google Fonts--->
+    <!----Google Fonts--->
     <link href="https://fonts.googleapis.com/css?family=Cute+Font|Oswald" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
 
-
-<title>City Rank</title>
+    <title>City Rank</title>
 </head>
 
 <body>
     <!-- Optional JavaScript -->
-<script type= "text/javascript" src = "assets/js/app.js"></script>
+    <script type="text/javascript" src="assets/js/app.js"></script>
 
-<!----Landing Page-->
-<div id="landing-window">
-    <div class="container">
+    <!----Landing Page-->
+    <div id="landing-window" class="container justify-content-center">
         <div class="row rows">
             <div class="col-sm">
-            <h1>Welcome to City Rank</h1>
-                <p>Considering a move but not sure which cities are your best bet?
-                Explore your options by sharing what's important to you and we'll offer some informed choices.
-                We'll start by answering a few questions to get an idea of your priorties.
+                <h1>Welcome to City Rank</h1>
+                <p>Considering a move but not sure which cities are your best bet?</br>
+                    Explore your options by sharing what's important to you and we'll offer some informed choices.</br>
+                    We'll start by answering a few questions to get an idea of your priorties.
                 </p>
             </div>
         </div>
-            <div class="text-center">
-                <button type="button" id ="start" class="btn blue-gradient">GET STARTED</button>
-            </div>
-        </div> 
-    </div>       
-</div>
-    
-<!----Category page-->
-<section id= "category">
-    <div class="title-container">
         <div class="text-center">
-            <h3>City Rank</h3>
+            <button type="button" id="start" class="btn blue-gradient">GET STARTED</button>
         </div>
     </div>
-</br>
-</br>
-<!------Happiness------>
-<div class="container">
-    <div class="happy">
-        <div class="col-sm-8-mx-auto">
+
+    <!----Preferences Page-->
+    <section id="slider-page">
+        <div class="title-container">
+            <div class="text-center">
+                <h3>Preferences</h3>
+            </div>
+        </div>
+        </br>
+        </br>
+        <!------Happiness------>
+        <div class="sliderContainers happy justify-content-center">
             <div class="row">
-                <div class="col">
-                    <label for="level-of-happiness"><h2>Level of Happiness</h2></label>
-                <input id="happiness"class="custom-range" value="0" min="0" max="100" type="range">
+                <div class="col-sm-8 mx-auto">
+                    <label for="level-of-happiness">
+                        <h2>Level of Happiness</h2>
+                    </label>
+                    <input id="happiness" class="custom-range" value="50" min="0" max="100" step="1" onChange="hapSliderChange(this.value)"type="range"/>
+                    <span id="hap-slider-status">50</span>
                     <i class="fas fa-frown float-left fa-2x"></i>
                     <i class="far fa-smile float-right fa-2x"></i>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<!------------>
+        <!------------>
 
-<!-------Political Affiliation-->
-<div class="container">
-    <div class="politics">
-        <div class="col-sm-8 mx-auto">
+        <!-------Political Affiliation-->
+        <div class="sliderContainers politics">
             <div class="row">
-                <div class="col">
-                    <label for="politics-affiliation"><h2>Political Affiliation</h2></label>
+                <div class="col-sm-8 mx-auto">
+                    <label for="politics-affiliation">
+                        <h2>Political Affiliation</h2>
+                    </label>
+                    <input id="political-affiliation" class="custom-range" value="50" min="0" max="100" step="1" onChange="polSliderChange(this.value)"type="range"/>
+                    <span id="pol-slider-status">50</span>
                     <i class="fas fa-democrat float-left fa-2x blue-text pr-3" aria-hidden="true"></i>
-                <input type="range" class="custom-range" id="political-affiliation">
                     <i class="fas fa-republican float-right fa-2x red-text pr-3" aria-hidden="true"></i>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<!------------------------>
+        <!------------------------>
 
-<!-----Cost of Living-->
-<div class= "container">
-    <div class="cost-of-living">
-        <div class="col-sm-8 mx-auto">
+        <!-----Cost of Living-->
+        <div class="sliderContainers cost-of-living">
             <div class="row">
-                <div class="col">
-                    <label for="cost-of-living"><h2>Cost of Living</h2></label>
-                <input type="range" min="0" max="100" class="custom-range" id="cost-of-living" />
+                <div class="col-sm-8 mx-auto">
+                    <label for="cost-of-living">
+                        <h2>Cost of Living</h2>
+                    </label>
+                    <input id="cost-of-living" class="custom-range" value="50" min="0" max="100" step="1" onChange="colSliderChange(this.value)"type="range"/>
+                    <span id="col-slider-status">50</span>
                     <i class="fas fa-dollar-sign float-right fa-2x green-text pr-3" aria-hidden="true"></i>
                     <i class="fas fa-dollar-sign float-right fa-2x green-text pr-3" aria-hidden="true"></i>
                     <i class="fas fa-dollar-sign float-right fa-2x green-text pr-3" aria-hidden="true"></i>
@@ -114,62 +115,48 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<!------------->
+        <!------------->
 
-<!----Job Outlook-->
-<div class= "container">
-    <div class="job-outlook">
-        <div class="col-sm-8 mx-auto">
+        <!----Job Outlook-->
+        <div class="sliderContainers job-outlook">
             <div class="row">
-                <div class="col">
-                    <label for="job-outlook"><h2>Job Outlook</h2></label>
-                        <div class="md-form">
-                            <i class="fas fa-user prefix fa-2x"></i>
-                            <input type="text" id="job-outlook" class="form-control">
-                                <label for="inputIconEx2">Searching For Job...</label>
-                        </div>
-                        <div class="text-center">
-                            <button type="button" class="btn blue-gradient" id="submit">Submit</button>
-                        </div>
+                <div class="col-sm-8 mx-auto">
+                    <label for="job-outlook">
+                        <h2>Job Title</h2>
+                    </label>
+                    <div class="md-form">
+                        <i class="fas fa-user prefix fa-2x"></i>
+                        <input type="text" id="job-outlook" class="form-control" placeholder="Searching For a Job">
+                        <label for="inputIconEx2"></label>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn blue-gradient" id="submit">Submit</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-</section>
-<!----------------->
+    </section>
+    <!----------------->
 
 
-<!----Results Page-->
-<div id = "result-page">
-        <div class="title-container">
-            <h3>Results</h3>
-        </div>
-            
-<div class="container">
-    <div class="city1-result">
-        <div class="col-sm-8-mx-auto">
-            <div class="row">
-                <div class="col">
-                            <p>Display Results Here</p>
-                </div>
+    <!----Results Page-->
+    <div id="result-page" class="container justify-content-center">
+        <div class="row rows">
+            <div class="col-sm">
+                <h1>Results</h1>
+                <p>Contents Here</p>
             </div>
         </div>
     </div>
-</div>        
-</div>       
+
 
 </body>
+<footer class="footer page-footer font-small black">
 
-<!----Footer-->
-<footer class="page-footer font-small black">
-
-<!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+    <!-- Copyright -->
+    <div class="footer_contents footer-copyright text-center py-3">© 2019 Copyright:
         <a href="https://github.com/team-jjtg/CityRank"> Team-JJTG</a>
-    </div>      
+    </div>
 </footer>
 
 </html>
