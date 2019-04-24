@@ -19,6 +19,18 @@ $("#submit").on("click", function () {
     $("#slider-page").hide();
 })
 
+$("#back-btn1").on("click", function (){
+    $("#result-page").hide();
+    $("#landing-window").show();
+    $("#slider-page").hide();
+})
+
+
+$("#back-btn2").on("click", function (){
+    $("#result-page").hide();
+    $("#landing-window").hide();
+    $("#slider-page").show();
+})
 });
 
 //these three functions are reading the values of the sliders and storing them in a variable
