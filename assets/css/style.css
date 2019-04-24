@@ -12,6 +12,7 @@ body {
     background-color: black;
     background-size: cover;
     background-position: center;
+overflow: hidden;
 }
 .start-container {
     padding: 10px;
@@ -108,6 +109,26 @@ h3 {
     height: 50px;
     width: 100%;
     margin:auto;
+}
+
+#back-btn1 {
+    padding: 15px; 
+    border-radius: .3rem;
+    margin: 20px;
+    display: block;
+    float: left;
+    position: absolute;
+    top: 2%; 
+}
+
+#back-btn2 {
+    padding: 15px; 
+    border-radius: .3rem;
+    margin: 20px;
+    display: block;
+    float: left;
+    position: absolute;
+    top: 2.5%; 
 }
 
 /*------------Slider Gradient Color ---------*/
