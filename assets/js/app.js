@@ -74,13 +74,19 @@ Controller.prototype.setClickHandlers = function() {
 Controller.prototype.getWriteResultsCallback = function() {
     let that = this;
     function innerWriteResults() {
+        const formatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 0
+        });
+
         $("#ranked-container").empty();
         for (var i = 0; i < that.rankedList.length; i++) {
             var cityProperties = Object.values(that.rankedList[i]);
             var cityName = Object.keys(that.rankedList[i])[0];
             var cityHappiness = cityProperties[0].happiness;
-            var cityAfford = cityProperties[0].affordability;
-            var newRow = $(`<p> ${i+1}. ${cityName} </br> Happiness:  ${cityHappiness} </br> Median Home Price:  ${cityAfford} </p>`);
+            var cityAfford = formatter.format(cityProperties[0].affordability);
+            var newRow = $(`<p> ${i+1}. ${cityName} </br> Civic Happiness:  ${cityHappiness} </br> Median Home Price:  ${cityAfford} </p>`);
             $("#ranked-container").append(newRow);
         }
     }
