@@ -60,6 +60,7 @@ h3 {
   align-content: center;
   background-color: whitesmoke;
   box-shadow: 0px 0px 10px black;
+  opacity: 0.95;
 }
 #result-page {
   padding: 4rem 2rem;
@@ -79,6 +80,7 @@ h3 {
   align-content: center;
   background-color: whitesmoke;
   box-shadow: 0px 0px 10px black;
+  opacity: 0.95;
 }
 .btn {
   padding: auto;
@@ -107,6 +109,10 @@ h3 {
   height: 3.125em;
   width: 100%;
   margin: auto;
+}
+
+#happiness::-ms-tooltip {
+  visibility: visble;
 }
 
 #start,
