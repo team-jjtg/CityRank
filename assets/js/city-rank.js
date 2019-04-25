@@ -6,18 +6,19 @@ function CityRank(dbConfig) {
     this.fb = new Firebase(dbConfig);
 }
 
-CityRank.prototype.normalizeData = function() {
+CityRank.prototype.filterData = function() {
 	
 	// Populate affordability data from endpoint (synchronously).
 	this.ca.getCountyAffordabiityCallback()(); 
 
-	// For each city known to the model, populate normalizedData[]
+	// For each city known to the model, populate filteredData[]
 	// with the following attributes:
 	//
 	// {"cityState": {"happiness": value, "political": {rep:value, dem:value}, "affordability": value}}
 	
-	let normalizedData = [];
+	let filteredData = [];
 	while (this.cm.hasMoreItems()) {
+        console.log("CityRank.filterData() filtering data :-)");
 		let index = this.cm.index;
 		 
 	 	let item = this.cm.getNextItem();
@@ -32,14 +33,14 @@ CityRank.prototype.normalizeData = function() {
 		politicalJson = this.cp.cherryPickFields(this.cpFields, countyState);
 		this.cm.setPoliticsJsonAtIndex(politicalJson, index);
 
+        // Just select the fields of interest to our app.
         let json = this.cm.cherryPickFields(["happiness", "politics", "affordability"], item);
-        let normalizedItem = {};
+        let filteredItem = {};
         let normalizedCityST = cityST.replace(/St\. /g, "St ");
-		normalizedItem[normalizedCityST] = json;
-		normalizedData.push(normalizedItem);
+		filteredItem[normalizedCityST] = json;
+		filteredData.push(filteredItem);
 	}
-    console.log(normalizedData);
-    return normalizedData;
+    return filteredData;
 }
 
 CityRank.prototype.publishData = function(data) {
@@ -60,14 +61,32 @@ CityRank.prototype.distance = function(v, w) {
     return distance;
 }
 
+CityRank.prototype.isEmpty = function(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
 CityRank.prototype.cityRank = function(userPrefs) {
     // userPrefs = {"happiness": value,
     //              "affordability": value,
     //              "politics": {"rep16_frac": val, "dem16_frac": val}}
 
-    let rankedCities = this.fb.data;
-    console.log(typeof(rankedCities));
-    console.log("CityRank.cityRank() userPrefs = ", userPrefs);
+    if (this.isEmpty(userPrefs)) {
+        console.log("CityRank.cityRank() Error: empty userPrefs");
+        return [];
+    }
+    let rankedCities = [];
+    if (this.fb.dataFromFB.length == this.fb.expectedDbLength) {
+        rankedCities = this.fb.dataFromFB;
+    } else {
+        rankedCities = this.fb.data;
+    }
+
+    // TODO: Calculate these dynamically.  For MVP, hardcode is
+    //       ok since input data is not changing.  Still, we could
+    //       push these to the appropriate sub-model objects.
 
     let minHappiness = 29.19;
     let maxHappiness = 72.30;
@@ -96,7 +115,6 @@ CityRank.prototype.cityRank = function(userPrefs) {
         rankedCities[i][key]["distance"] = distance;
     }
     let compareFn = this.getCompareDistance();
-    console.log("is array(rankedCities) = ", Array.isArray(rankedCities));
     rankedCities.sort(compareFn);
     return rankedCities;
 }
@@ -115,12 +133,21 @@ CityRank.prototype.getCompareDistance = function() {
 }
 
 function UnitTestCityRank() {
-    cr = new CityRank(Firebase.prototype.jacksonDbConfig);
-    let normalizedData = cr.normalizeData();
-    cr.publishData(normalizedData);
-    let userPrefs = {"happiness": 29.19, "affordability": 82500, "politics": {"rep16_frac": 25.00}};
-    userPrefs = {"happiness": 78, "affordability": 500000, "politics": {"rep16_frac": 50.00}};
+    cr = new CityRank(Firebase.prototype.glennDbConfig);
+    if (cr.fb.dataFromFB.length < cr.fb.expectedDbLength) {
+        console.log("Publising filtered data to firebase.");
+        // If persisted storage has not yet been populated,
+        // do so.  Even if this is a race condition, it's benign
+        // to republish ... though post MVP, we should double check.
+        let filteredData = cr.filterData();
+        cr.publishData(filteredData);
+    } else {
+        console.log("Using persisted data from firebase.");
+    }
+    let userPrefs = {};
+    // userPrefs = {"happiness": 78, "affordability": 500000, "politics": {"rep16_frac": 50.00}};
+    userPrefs = {"happiness": 29.19, "affordability": 82500, "politics": {"rep16_frac": 25.00}};
     let rankedCities = cr.cityRank(userPrefs);
-    console.log("ranked cities = ", rankedCities);
     console.log("userPrefs = ", userPrefs);
+    console.log("UnitTestCityRank rankedCities = ", rankedCities);
 }

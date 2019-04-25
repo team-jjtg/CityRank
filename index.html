@@ -34,8 +34,16 @@
 
     <!----Google Fonts--->
     <link href="https://fonts.googleapis.com/css?family=Cute+Font|Oswald|Bangers" rel="stylesheet">
-    
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+    <script src="assets/js/city-metrics.js"></script>
+    <script src="assets/js/county-political.js"></script>
+    <script src="assets/js/county-political-json.js"></script>
+    <script src="assets/js/city-to-county.js"></script>
+    <script src="assets/js/affordability.js"></script>
+    <script src="assets/js/firebase.js"></script>
+    <script src="assets/js/city-rank.js"></script>
 
     <title>City Rank</title>
 </head>
@@ -63,7 +71,7 @@
             <div class="text-center">
                 <h3>Preferences</h3>
             </div>
-                <a class= "btn-floating btn-lg blue-gradient" id="back-btn1"><i class="far fa-arrow-alt-circle-left fa-2x"></i></a>
+            <a class= "btn-floating btn-lg blue-gradient" id="back-btn1"><i class="far fa-arrow-alt-circle-left fa-2x"></i></a>
         </div>
         </br>
         </br>
@@ -72,9 +80,9 @@
             <div class="row">
                 <div class="col-sm-8 mx-auto">
                     <label for="level-of-happiness">
-                        <h2>Level of Happiness</h2>
+                        <h2>Civic Happiness</h2>
                     </label>
-                    <input id="happiness" class="custom-range" value="50" min="29" max="73" step="1" onChange="hapSliderChange(this.value)"type="range"/>
+                    <input id="happiness" class="custom-range" value="50" min="29" max="73" step="1" type="range"/>
                     <span id="hap-slider-status">50</span>
                     <i class="fas fa-frown float-left fa-2x"></i>
                     <i class="far fa-smile float-right fa-2x"></i>
@@ -90,7 +98,7 @@
                     <label for="politics-affiliation">
                         <h2>Political Affiliation</h2>
                     </label>
-                    <input id="political-affiliation" class="custom-range" value="50" min="0" max="100" step="1" onChange="polSliderChange(this.value)"type="range"/>
+                    <input id="political-affiliation" class="custom-range" value="50" min="0" max="100" step="1" type="range"/>
                     <span id="pol-slider-status">50</span>
                     <i class="fas fa-democrat float-left fa-2x blue-text pr-3" aria-hidden="true"></i>
                     <i class="fas fa-republican float-right fa-2x red-text pr-3" aria-hidden="true"></i>
@@ -106,12 +114,11 @@
                     <label for="cost-of-living">
                         <h2>Cost of Living</h2>
                     </label>
-                    <input id="cost-of-living" class="custom-range" value="496501" min="82500" max="927400" step="8449" onChange="colSliderChange(this.value)"type="range"/>
+                    <input id="cost-of-living" class="custom-range" value="496501" min="82500" max="927400" step="8449" type="range"/>
                     <span id="col-slider-status">50</span>
-                    <i class="fas fa-dollar-sign float-right fa-2x green-text pr-3" aria-hidden="true"></i>
-                    <i class="fas fa-dollar-sign float-right fa-2x green-text pr-3" aria-hidden="true"></i>
-                    <i class="fas fa-dollar-sign float-right fa-2x green-text pr-3" aria-hidden="true"></i>
-                    <i class="fas fa-dollar-sign float-left fa-2x green-text pr-3" aria-hidden="true"></i>
+                    <i class="fas fa-dollar-sign float-right fa-lg green-text pr-3" aria-hidden="true"></i>
+                    <i class="fas fa-dollar-sign float-right fa-lg green-text pr-3" aria-hidden="true"></i>
+                    <i class="fas fa-dollar-sign float-left fa-lg green-text pr-3" aria-hidden="true"></i>
                 </div>
             </div>
         </div>
@@ -126,7 +133,7 @@
                     </label>
                     <div class="md-form">
                         <i class="fas fa-user prefix fa-2x"></i>
-                        <input type="text" id="job-outlook" class="form-control" placeholder="Searching For a Job">
+                        <input type="text" id="job-outlook" class="form-control" placeholder="Searching For a Job" disabled>
                         <label for="inputIconEx2"></label>
                     </div>
                     <div class="text-center">
@@ -145,7 +152,7 @@
             <div class="col-sm">
                 <h1>Results</h1>
                 <p id="ranked-container"></p>
-                    <a class= "btn-floating btn-lg blue-gradient" id="back-btn2"><i class="far fa-arrow-alt-circle-left fa-1x"></i></a>
+                <a class= "btn-floating btn-lg blue-gradient" id="back-btn2"><i class="far fa-arrow-alt-circle-left fa-1x"></i></a>
             </div>
         </div>
     </div>
@@ -161,15 +168,11 @@
 </footer>
 
 <!-- Optional JavaScript -->
-
-<script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
-<script src="assets/js/city-metrics.js"></script>
-<script src="assets/js/county-political.js"></script>
-<script src="assets/js/county-political-json.js"></script>
-<script src="assets/js/city-to-county.js"></script>
-<script src="assets/js/affordability.js"></script>
-<script src="assets/js/firebase.js"></script>
-<script src="assets/js/city-rank.js"></script>
 <script type="text/javascript" src="assets/js/app.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        let controller = new Controller();
+    });
+</script>
 
 </html>
