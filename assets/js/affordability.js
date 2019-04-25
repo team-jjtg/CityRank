@@ -27,7 +27,7 @@ CountyAffordabiity.prototype.getCountyAffordabiityCallback = function(electionDa
 				let medianHomeprice = parseInt(response[i][0]);	// Using median home price as proxy for affordabiltiy.
 				let countyState = response[i][1];
 				// Allow affordability to be looked-up by 'county, state' key.
-				console.log("countyState = ", countyState);
+				//console.log("countyState = ", countyState);
                 that.affordabilityByCounty[countyState] = medianHomeprice;
 			}
         }).fail(function(err) {
