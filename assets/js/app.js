@@ -12,16 +12,17 @@
 
 function Controller() {
     this.cr = new CityRank(Firebase.prototype.glennDbConfig);
-    this.normalizedData = this.cr.normalizeData();
-    this.cr.publishData(this.normalizedData);
+    this.filteredData = this.cr.filterData();
+    this.cr.publishData(this.filteredData);
     this.resetView();
     this.setClickHandlers();
     this.writeResults = this.getWriteResultsCallback();
+    this.userPrefs = {"happiness": this.hapVal, "affordability": this.colVal, "politics": this.polVal};
 }
-Controller.prototype.colVal = NaN;
-Controller.prototype.hapVal = NaN;
-Controller.prototype.polVal = NaN;
-Controller.prototype.userPrefs = {};
+// Default slider values.
+Controller.prototype.colVal = 496501; // mid-point of median home price range
+Controller.prototype.hapVal = 50;     // mid-point on 100 point scale
+Controller.prototype.polVal = {"rep16_frac": 50, "dem16_frac": 50};
 Controller.prototype.rankedList = [];
 
 Controller.prototype.resetView = function() {
