@@ -51,9 +51,9 @@ for (var i = 0; i <= rankedList.length; i++) {
     var cityName = Object.keys(rankedList[i])[0];
     var cityHappiness = cityProperties[0].happiness;
     var cityAfford = cityProperties[0].affordability;
-    console.log(cityName);
-    console.log("Happiness = ", cityHappiness);
-    console.log("Affordability = ", cityAfford);
+    //console.log(cityName);
+    //console.log("Happiness = ", cityHappiness);
+    //console.log("Affordability = ", cityAfford);
     //console.log("Political = ", cityProperties[0].Political Something);
 
     
@@ -68,18 +68,34 @@ $("#results-button").on("click", writeResults);
 var polVal;
 var colVal;
 var hapVal;
+var userPrefs = {};
+cr = new CityRank(Firebase.prototype.glennDbConfig);
 function polSliderChange(val) {
     document.getElementById("pol-slider-status").innerHTML = val;
-    polVal = val;
-    console.log("Political Slider Value = ", polVal);
+    polVal = Number(val);
+    democratVal = (100 - polVal);
+    console.log("Democrat Value = ", democratVal);
+    console.log("Republican Value = ", polVal);
+    userPrefs.politics = {"rep16_frac": polVal, "dem16_frac": democratVal};
 }
 function hapSliderChange(val) {
     document.getElementById("hap-slider-status").innerHTML = val;
     hapVal = val;
     console.log("Happiness Slider Value = ", hapVal);
+    userPrefs.happiness = hapVal;
 }
 function colSliderChange(val) {
     document.getElementById("col-slider-status").innerHTML = val;
     colVal = val;
     console.log("Cost of Living Slider Value = ", colVal);
+    userPrefs.affordability = colVal;
 }
+function rankCities() {
+   
+    let normalizedData = cr.normalizeData();
+    cr.publishData(normalizedData);
+    let rankedCities = cr.cityRank(userPrefs);
+    console.log("ranked cities = ", rankedCities);
+    console.log(rankedCities);
+}
+$("#results-button").on("click", rankCities);

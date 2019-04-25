@@ -16,7 +16,11 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <!-- JQuery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script
+     src="https://code.jquery.com/jquery-3.4.0.min.js"
+     integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
+     crossorigin="anonymous"
+   ></script>
     <!-- Bootstrap core CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
@@ -30,9 +34,7 @@
 
     <!----Google Fonts--->
     <link href="https://fonts.googleapis.com/css?family=Cute+Font|Oswald|Bangers" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    
     <link rel="stylesheet" href="assets/css/style.css">
 
     <title>City Rank</title>
@@ -72,7 +74,7 @@
                     <label for="level-of-happiness">
                         <h2>Level of Happiness</h2>
                     </label>
-                    <input id="happiness" class="custom-range" value="50" min="0" max="100" step="1" onChange="hapSliderChange(this.value)"type="range"/>
+                    <input id="happiness" class="custom-range" value="50" min="29" max="73" step="1" onChange="hapSliderChange(this.value)"type="range"/>
                     <span id="hap-slider-status">50</span>
                     <i class="fas fa-frown float-left fa-2x"></i>
                     <i class="far fa-smile float-right fa-2x"></i>
@@ -104,7 +106,7 @@
                     <label for="cost-of-living">
                         <h2>Cost of Living</h2>
                     </label>
-                    <input id="cost-of-living" class="custom-range" value="50" min="0" max="100" step="1" onChange="colSliderChange(this.value)"type="range"/>
+                    <input id="cost-of-living" class="custom-range" value="496501" min="82500" max="927400" step="8449" onChange="colSliderChange(this.value)"type="range"/>
                     <span id="col-slider-status">50</span>
                     <i class="fas fa-dollar-sign float-right fa-2x green-text pr-3" aria-hidden="true"></i>
                     <i class="fas fa-dollar-sign float-right fa-2x green-text pr-3" aria-hidden="true"></i>
@@ -159,6 +161,15 @@
 </footer>
 
 <!-- Optional JavaScript -->
+
+<script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+<script src="assets/js/city-metrics.js"></script>
+<script src="assets/js/county-political.js"></script>
+<script src="assets/js/county-political-json.js"></script>
+<script src="assets/js/city-to-county.js"></script>
+<script src="assets/js/affordability.js"></script>
+<script src="assets/js/firebase.js"></script>
+<script src="assets/js/city-rank.js"></script>
 <script type="text/javascript" src="assets/js/app.js"></script>
 
 </html>
