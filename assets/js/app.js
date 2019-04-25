@@ -12,8 +12,13 @@
 
 function Controller() {
     this.cr = new CityRank(Firebase.prototype.glennDbConfig);
-    this.filteredData = this.cr.filterData();
-    this.cr.publishData(this.filteredData);
+    if (this.cr.fb.dataFromFB.length < this.cr.fb.expectedDbLength) {
+        console.log("Controller: Filtering and publishing city data to firebase.")
+        this.filteredData = this.cr.filterData();
+        this.cr.publishData(this.filteredData);
+    } else {
+        console.log("Controller: Using persisted data from firebase.");
+    }
     this.resetView();
     this.setClickHandlers();
     this.writeResults = this.getWriteResultsCallback();
