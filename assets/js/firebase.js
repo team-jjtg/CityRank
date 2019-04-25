@@ -4,8 +4,11 @@ function Firebase(dbConfig) {
     this.dbInit();
     this.dbRef = this.getDbRef();
     this.addDbListener('child_added');
+    this.dataFromFB = [];
+    this.data = [];
 }
-Firebase.prototype.data = [""];
+Firebase.prototype.data = [];
+Firebase.prototype.dataFromFB = [];
 Firebase.prototype.dbConfig = {};
 
 Firebase.prototype.jakeDbConfig = {
@@ -53,6 +56,7 @@ Firebase.prototype.getDbRef = function(childNode) {
 }
 
 Firebase.prototype.dbPushData = function(data) {
+    this.setData(data);
     console.log("Firebase.dbPushData() adding data");
     if (this.validInputData()) {
         this.dbRef.push(data);
@@ -63,8 +67,8 @@ Firebase.prototype.dbPushData = function(data) {
 
 Firebase.prototype.dbSetData = function(data) {
     this.setData(data);
-    console.log("Firebase.dbSetData()");
     if (this.validInputData(data)) {
+        console.log("Firebase.dbSetData() publishing data to FB.");
         this.dbRef.set(data);
     } else {
         console.log(`Firebase.dbSetData: Invalid input data length.  Expecting ${this.expectedDbLength} entries. Ignoring`);
@@ -78,10 +82,7 @@ Firebase.prototype.validInputData = function(data) {
 Firebase.prototype.addDbListener = function(dbEvent = 'child_added') {
     let that = this;
     this.dbRef.on(dbEvent, function(childSnapshot) {
-        //console.log("Firebase.addDbListener(): child_added, you could update the view here");
-        //that.data = childSnapshot.val();
-        //console.log("data = ", that.data);
-        // that.updateView();
+        that.dataFromFB.push(childSnapshot.val());
     });
 }
 
@@ -94,4 +95,5 @@ function UnitTestFirebase() {
     fb.expectedDbLength = 2;
     let data = [{'testing': 3.14159}, {'testing2': 1.618}];
     fb.dbSetData(data);
+    console.log("UnitTestFirebase: fb.dataFromFB = ", fb.dataFromFB);
 }
