@@ -1,5 +1,5 @@
 function Firebase(dbConfig) {
-    this.expectedDbLength = 182;
+    this.expectedDbLength = 177;
     this.dbConfig = dbConfig;
     this.dbInit();
     this.dbRef = this.getDbRef();
@@ -53,6 +53,7 @@ Firebase.prototype.dbPushData = function(data) {
 }
 
 Firebase.prototype.dbSetData = function(data) {
+    this.setData(data);
     console.log("Firebase.dbSetData()");
     if (this.validInputData(data)) {
         this.dbRef.set(data);
