@@ -1,5 +1,5 @@
 function Firebase(dbConfig) {
-    this.expectedDbLength = 177;
+    this.expectedDbLength = 178;
     this.dbConfig = dbConfig;
     this.dbInit();
     this.dbRef = this.getDbRef();
@@ -24,6 +24,15 @@ Firebase.prototype.glennDbConfig = {
     projectId: "city-rank-7a3a2",
     storageBucket: "city-rank-7a3a2.appspot.com",
     messagingSenderId: "806278411941"
+};
+
+Firebase.prototype.jacksonDbConfig = {
+    apiKey: "AIzaSyArzRDFqxyangn-k213sd3a71_JezY6EXY",
+    authDomain: "city-rank-70929.firebaseapp.com",
+    databaseURL: "https://city-rank-70929.firebaseio.com",
+    projectId: "city-rank-70929",
+    storageBucket: "city-rank-70929.appspot.com",
+    messagingSenderId: "1018531085864"
 };
 
 Firebase.prototype.setData = function(normalizedCityMetrics) {
@@ -69,9 +78,9 @@ Firebase.prototype.validInputData = function(data) {
 Firebase.prototype.addDbListener = function(dbEvent = 'child_added') {
     let that = this;
     this.dbRef.on(dbEvent, function(childSnapshot) {
-        console.log("Firebase.addDbListener(): child_added, you could update the view here");
-        that.data = childSnapshot.val();
-        console.log("data = ", that.data);
+        //console.log("Firebase.addDbListener(): child_added, you could update the view here");
+        //that.data = childSnapshot.val();
+        //console.log("data = ", that.data);
         // that.updateView();
     });
 }

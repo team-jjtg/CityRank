@@ -66,46 +66,61 @@ CityRank.prototype.cityRank = function(userPrefs) {
     //              "politics": {"rep16_frac": val, "dem16_frac": val}}
 
     let rankedCities = this.fb.data;
+    console.log(typeof(rankedCities));
     console.log("CityRank.cityRank() userPrefs = ", userPrefs);
-    let v = [userPrefs.happiness, userPrefs.affordability, userPrefs.politics.rep16_frac];
 
-    // TODO:
-    //
-    // I think for purposes of rank calculation, we need to normalize all
-    // values between 0 and 100, so that each dimension of preference contributes
-    // equally in the distance calculation.
-    //
-    // This means we'll need to calculate the range of the input data and
-    // scale the smallest item at 0 and largest at 100.
+    let minHappiness = 29.19;
+    let maxHappiness = 72.30;
+    let happinessRange = maxHappiness - minHappiness;
 
-    for (let i = 0; i < rankedCities; i++) {
+    let minAffordability = 82500;
+    let maxAffordability = 927400;
+    let affordabilityRange = maxAffordability - minAffordability;
+
+    let scaledHappines = (userPrefs.happiness - minHappiness) * (100 / happinessRange);
+    let scaledAffordability = (userPrefs.affordability - minAffordability) * (100 / affordabilityRange);
+
+    let v = [scaledHappines, scaledAffordability, userPrefs.politics.rep16_frac];
+
+    for (let i = 0; i < rankedCities.length; i++) {
         let item = rankedCities[i];
         // IMPORTANT: Order of picked fields must match order of fields in v.
-        let cityAttr = Object.values(cm.cherryPickFields(["happiness", "affordability", "politics"], item));
-        let w = [cityAttr.happiness, cityAttr.affordability, cityAttr.politics.rep16_frac];
+        let cityAttr = Object.values(this.cm.cherryPickFields(["happiness", "affordability", "politics"], item));
+        scaledHappiness = (cityAttr[0] - minHappiness) * (100 / happinessRange);
+        scaledAffordability = (cityAttr[1] - minAffordability) * (100 / affordabilityRange);
+
+        let w = [scaledHappiness, scaledAffordability, cityAttr[2].rep16_frac];
         let distance = this.distance(v, w);
         rankedCities["distance"] = distance;
-        console.log("rankedCities = ", rankedCities);
+        let key = Object.keys(item)[0];
+        rankedCities[i][key]["distance"] = distance;
     }
-    console.log("typeof rankedCities = ", Array.isArray(rankedCities));
-    rankedCities.sort(this.compareDistance);
+    let compareFn = this.getCompareDistance();
+    console.log("is array(rankedCities) = ", Array.isArray(rankedCities));
+    rankedCities.sort(compareFn);
     return rankedCities;
 }
 
-CityMetrics.prototype.compareDistance = function(a, b) {
-    let aDistance = a[Object.keys(a)].distance;
-    let bDistance = b[Object.keys(b)].distance;
-    
-    if (aDistance > bDistance) return 1;
-    if (aDistance == bDistance) return 0;
-    if (aDistance < bDistance) return -1;
+CityRank.prototype.getCompareDistance = function() {
+	function compareDistance(a, b) {
+        let aKey = Object.keys(a)[0];
+        let bKey = Object.keys(b)[0];
+        let aDistance = a[aKey].distance;
+        let bDistance = b[bKey].distance;
+        if (aDistance > bDistance) return 1;
+        if (aDistance == bDistance) return 0;
+        if (aDistance < bDistance) return -1;
+	}
+	return compareDistance;
 }
 
 function UnitTestCityRank() {
-    cr = new CityRank(Firebase.prototype.glennDbConfig);
+    cr = new CityRank(Firebase.prototype.jacksonDbConfig);
     let normalizedData = cr.normalizeData();
     cr.publishData(normalizedData);
-    let userPrefs = {"happiness": 50, "affordability": 200000, "politics": {"rep16_frac": 25.00}};
+    let userPrefs = {"happiness": 29.19, "affordability": 82500, "politics": {"rep16_frac": 25.00}};
+    userPrefs = {"happiness": 78, "affordability": 500000, "politics": {"rep16_frac": 50.00}};
     let rankedCities = cr.cityRank(userPrefs);
     console.log("ranked cities = ", rankedCities);
+    console.log("userPrefs = ", userPrefs);
 }
