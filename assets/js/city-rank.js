@@ -60,11 +60,22 @@ CityRank.prototype.distance = function(v, w) {
     return distance;
 }
 
+CityRank.prototype.isEmpty = function(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
 CityRank.prototype.cityRank = function(userPrefs) {
     // userPrefs = {"happiness": value,
     //              "affordability": value,
     //              "politics": {"rep16_frac": val, "dem16_frac": val}}
 
+    if (this.isEmpty(userPrefs)) {
+        console.log("CityRank.cityRank() Error: empty userPrefs");
+        return [];
+    }
     let rankedCities = this.fb.data;
     console.log(typeof(rankedCities));
     console.log("CityRank.cityRank() userPrefs = ", userPrefs);
@@ -96,8 +107,9 @@ CityRank.prototype.cityRank = function(userPrefs) {
         rankedCities[i][key]["distance"] = distance;
     }
     let compareFn = this.getCompareDistance();
-    console.log("is array(rankedCities) = ", Array.isArray(rankedCities));
+    // console.log("is array(rankedCities) = ", Array.isArray(rankedCities));
     rankedCities.sort(compareFn);
+    console.log("rankedCities = ", rankedCities);
     return rankedCities;
 }
 
