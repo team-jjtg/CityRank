@@ -119,6 +119,7 @@ h3 {
     float: left;
     position: absolute;
     top: 2%; 
+    
 }
 
 #back-btn2 {
@@ -128,12 +129,18 @@ h3 {
     display: block;
     float: left;
     position: absolute;
-    top: 2.8%; 
+    top: 0.5%; 
 }
 
 /*------------Slider Gradient Color ---------*/
 
-@media (min-width: 576px){}
-
-
-
+@media (min-width: 576px){
+    
+}
+@media screen and (max-width: 768px) {
+    .btn {
+        display: block;
+        width: auto;
+        float: none;
+    }
+}
