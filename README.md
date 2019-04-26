@@ -43,7 +43,9 @@ Our application is hosted [here](https://team-jjtg.github.io/CityRank/).
 
 # Designer's Log
 
-It's April 15, 2019 and we've formed into teams of four. Since we only have 2 weeks to knock this out, we're mindful of keeping the scope reasonable.
+It's April 15, 2019 and we've formed into teams of four. Since we only have 2 weeks to knock out a group project, we're mindful of keeping the scope reasonable.
+
+## Initial Concept
 
 Jackson suggests an application to select a University. Jake suggests we generalize to selecting a city in which to live. We think about various attributes and come up with an interface that features sliders:
 
@@ -59,6 +61,8 @@ and cleans up our design sketches into wireframes:
 
 Eventually we scrub on weather since that is actually more nebulous than other metrics.
 
+## Endpoints of Data
+
 The hunt is on for endpoints for the other data.
 
 Jake finds:
@@ -71,6 +75,8 @@ I find:
 
 - political data at [opendatasoft.com](https://public.opendatasoft.com/api/records/1.0/search/?dataset=usa-2016-presidential-election-by-county&facet=county&rows=3)
 - city-to-county mapper at [statsamerica.org](http://statsamerica.org/CityCountyFinder/Default.aspx)
+
+## Our Data Model
 
 This data gets cooked down into several objects:
 
@@ -93,6 +99,8 @@ Our goal is to crunch down all this bulky data and upload to firebase where it c
 
 ![alt](docs/images/firebase-data.png)
 
+## Bugs and Rabbit Holes
+
 Along the way, we encounter bugs like this where one dataset uses a slightly different name for a county (i.e, 'Lucie County' versus 'St. Lucie County'). We either augment out methods to normalize this or expediently nix that city in the heat of battle toward MVP.
 
 ![alt](docs/images/endpoint-bug.png)
@@ -104,6 +112,8 @@ The other interesting bug is that firebase does not like your keys to have '.' d
 After Jake hands me some example code for interfacing with the jobs and affordability endpoints, I focus on the model and Jake shifts to working with Tue on the frontend.
 
 Initially I think it would be cool to explore Material Lite UI, and that sends Tue on a steep learning curve that our kind TAs suggest we abandon for something simpler like Materialize or, as Tue finds, Bootstrap's Material Design.
+
+## Ranking Algorithm
 
 ![alt](docs/images/3-dimensions-of-preferences.png)
 
@@ -125,6 +135,8 @@ You do that for each city and the user preferences and dump that into an array t
 
 Finally, we also scale each axis to a range of 0 to 100 to give each preference equal weight in the distance formulat.
 
+## Integration
+
 ![alt](docs/images/integration.png)
 
 The integration between the frontend and backend goes pretty quickly, about two hours of effort. Then it is all about smoothing out the rough edges and deciding we don't have runway to complete the job-lookup, though we leave it grayed-out in the design to suggest a future direction.
@@ -132,6 +144,8 @@ The integration between the frontend and backend goes pretty quickly, about two 
 At this stage, we have something upon which we could build:
 
 ![alt](docs/images/results.png)
+
+## Future Direction
 
 Perhaps as a second project, we could add more interesting visualizations:
 
