@@ -56,7 +56,7 @@ Jake gets us thinking about deliverables:
 
 and cleans up our design sketches into wireframes:
 
-![alt](docs/images/wireframes.png)
+![alt](docs/images/wireframe.png)
 
 Eventually we scrub on weather since that is actually more nebulous than other metrics.
 
