@@ -10,16 +10,16 @@ Indentify cities that align with your personal beliefs and priorities while putt
 
 # Tech Stack
 
-Frontend: Bootstrap, jquery, ajax.
-Backend: Firebase
-Pattern: MVC
+* Frontend: Bootstrap, jquery, ajax.
+* Backend: Firebase
+* Pattern: MVC
 
 # Roles
 
 * Jake Stevens - Application concept and fullstack developer.
 * Tue Quach - Frontend design
 * Jackson Henry - Algorithm design
-( Glenn Streiff - Model design, Integration
+* Glenn Streiff - Model design, Integration
 
 # MVP
 
