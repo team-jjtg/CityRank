@@ -2,6 +2,11 @@
 
 Rank livable cities based upon user preferences along 3 dimensions.
 
+Release 1.0 MVP User Interface
+
+![alt](docs/images/mvp-screenshot.png)
+
+
 # Value Add Proposal
 
 Simplify your next big move with big data and a clean user interface for specifying preferences for affordability, political affiliation, and overall civic happiness.
