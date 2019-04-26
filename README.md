@@ -14,7 +14,7 @@ Indentify cities that align with your personal beliefs and priorities while putt
 
 # Tech Stack
 
-- Frontend: Bootstrap, jquery, ajax.
+- Frontend: HTML, CSS, Javascript, Jquery, Bootstrap, Bootstrap Material Design, AJAX.
 - Backend: Firebase
 - Pattern: MVC
 
@@ -133,7 +133,7 @@ Then the trick is to compute the distance between the user's preference vector a
 
 You do that for each city and the user preferences and dump that into an array to be sorted. The shortest distance between the preference point and a city gives you the 'best' match to those preferences. All our cities are ranked this way.
 
-Finally, we also scale each axis to a range of 0 to 100 to give each preference equal weight in the distance formulat.
+Finally, we also scale each axis to a range of 0 to 100 to give each preference equal weight in the distance formula.
 
 ## Integration
 
