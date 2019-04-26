@@ -109,9 +109,9 @@ The other interesting bug is that firebase does not like your keys to have '.' d
 
 ![al](docs/images/fb-key-bug.png)
 
-After Jake hands me some example code for interfacing with the jobs and affordability endpoints, I focus on the model and Jake shifts to working with Tue on the frontend.
-
 Initially I think it would be cool to explore Material Lite UI, and that sends Tue on a steep learning curve that our kind TAs suggest we abandon for something simpler like Materialize or, as Tue finds, Bootstrap's Material Design.
+
+![alt](docs/images/material-ui-lite.png)
 
 ## Ranking Algorithm
 
@@ -138,6 +138,8 @@ Finally, we also scale each axis to a range of 0 to 100 to give each preference 
 ## Integration
 
 ![alt](docs/images/integration.png)
+
+After Jake hands me some example code for interfacing with the jobs and affordability endpoints, I focus on the model and Jake shifts to working with Tue on the frontend.
 
 The integration between the frontend and backend goes pretty quickly, about two hours of effort. Then it is all about smoothing out the rough edges and deciding we don't have runway to complete the job-lookup, though we leave it grayed-out in the design to suggest a future direction.
 
