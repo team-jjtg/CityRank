@@ -111,7 +111,7 @@ Jackson works on the algorithm for ranking our cities.
 
 You can think about a user's preferenes as existing at a point in three-dimensional space, with each preference lying on a separate axis (for affordability, politics, and civic happiness):
 
-![alt](docs/images/3d-vector.png.png)
+![alt](docs/images/3d-vector.png)
 
 The same goes for each city. Each city is also associated with those same 3 attributes and can be represented by a point or vector in space. So out 182 cities of interest are scattered about in 3-space:
 
