@@ -43,7 +43,7 @@ Our application is hosted [here](https://team-jjtg.github.io/CityRank/).
 
 # Designer's Log
 
-It's April 15, 2019 and we've formed into teams of four. Since we only have 2 weeks to knock out a group project, we're mindful of keeping the scope reasonable.
+It's April 15, 2019 and we've formed into teams of four. Since we only have 2 weeks to knock a group project, we're mindful of keeping the scope reasonable.
 
 ## Initial Concept
 
@@ -123,7 +123,7 @@ You can think about a user's preferenes as existing at a point in three-dimensio
 
 ![alt](docs/images/3d-vector.png)
 
-The same goes for each city. Each city is also associated with those same 3 attributes and can be represented by a point or vector in space. So out 182 cities of interest are scattered about in 3-space:
+The same goes for each city. Each city is also associated with those same 3 attributes and can be represented by a point or vector in space. So our 182 cities of interest are scattered about in 3-space:
 
 ![alt](docs/images/scattered-points.png)
 
