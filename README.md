@@ -27,7 +27,7 @@ Glenn Streiff - Model design, Integration
 * Phase Two - get data flowing, filtered, and uploaded to firebase.
 * Phase Three - refine user interface while evolving the controller.
 * Phase Four - integrate MVC
-* Phase Five - refine, test, preset
+* Phase Five - refine, test, present.
 
 # Team Management
 
