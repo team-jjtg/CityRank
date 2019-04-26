@@ -107,7 +107,7 @@ After Jake hands me some example code for interfacing with the jobs and affordab
 Initially I think it would be cool to explore Material Lite UI, and that sends Tue on a steep learning curve that our kind TAs suggest we abandon for something simpler like Materialize or, as Tue finds, Bootstrap's Material Design.
 
 Jackson works on the algorithm for ranking our cities by computing the 'distance' between a user's preferences and the attributes of each city. We ultimately go with a vector difference calculation and we normalized our input axes to a scale of 0 to 100 so each
-attribute would is weighted equally and yields meaning full results sensitive to all input parameters.
+attribute is weighted equally and yields meaningful results sensitive to all input parameters.
 
 The integration between the frontend and backend goes pretty quickly, about two hours of effort. Then it is all about smoothing out the rough edges and deciding we don't have runway to complete the job-lookup, though we leave it grayed-out in the design to suggest a future direction.
 
