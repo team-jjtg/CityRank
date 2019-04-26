@@ -23,11 +23,11 @@ Glenn Streiff - Model design, Integration
 
 # MVP
 
-Phase One - select APIs and implement simple user interface.
-Phase Two - get data flowing, filtered, and uploaded to firebase.
-Phase Three - refine user interface while evolving the controller.
-Phase Four - integrate MVC
-Phase Five - refine, test, preset
+* Phase One - select APIs and implement simple user interface.
+* Phase Two - get data flowing, filtered, and uploaded to firebase.
+* Phase Three - refine user interface while evolving the controller.
+* Phase Four - integrate MVC
+* Phase Five - refine, test, preset
 
 # Team Management
 
