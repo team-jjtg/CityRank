@@ -6,7 +6,6 @@ Release 1.0 MVP User Interface
 
 ![alt](docs/images/mvp-screenshot.png)
 
-
 # Value Add Proposal
 
 Simplify your next big move with big data and a clean user interface for specifying preferences for affordability, political affiliation, and overall civic happiness.
@@ -15,24 +14,24 @@ Indentify cities that align with your personal beliefs and priorities while putt
 
 # Tech Stack
 
-* Frontend: Bootstrap, jquery, ajax.
-* Backend: Firebase
-* Pattern: MVC
+- Frontend: Bootstrap, jquery, ajax.
+- Backend: Firebase
+- Pattern: MVC
 
 # Roles
 
-* Jake Stevens - Application concept and fullstack developer.
-* Tue Quach - Frontend design
-* Jackson Henry - Algorithm design
-* Glenn Streiff - Model design, Integration
+- Jake Stevens - Application concept and fullstack developer.
+- Tue Quach - Frontend design
+- Jackson Henry - Algorithm design
+- Glenn Streiff - Model design, Integration
 
 # MVP
 
-* Phase One - select APIs and implement simple user interface.
-* Phase Two - get data flowing, filtered, and uploaded to firebase.
-* Phase Three - refine user interface while evolving the controller.
-* Phase Four - integrate MVC
-* Phase Five - refine, test, present.
+- Phase One - select APIs and implement simple user interface.
+- Phase Two - get data flowing, filtered, and uploaded to firebase.
+- Phase Three - refine user interface while evolving the controller.
+- Phase Four - integrate MVC
+- Phase Five - refine, test, present.
 
 # Team Management
 
@@ -106,8 +105,27 @@ After Jake hands me some example code for interfacing with the jobs and affordab
 
 Initially I think it would be cool to explore Material Lite UI, and that sends Tue on a steep learning curve that our kind TAs suggest we abandon for something simpler like Materialize or, as Tue finds, Bootstrap's Material Design.
 
-Jackson works on the algorithm for ranking our cities by computing the 'distance' between a user's preferences and the attributes of each city. We ultimately go with a vector difference calculation and we normalized our input axes to a scale of 0 to 100 so each
-attribute is weighted equally and yields meaningful results sensitive to all input parameters.
+![alt](docs/images/3-dimensions-of-preferences.png)
+
+Jackson works on the algorithm for ranking our cities.
+
+You can think about a user's preferenes as existing at a point in three-dimensional space, with each preference lying on a separate axis (for affordability, politics, and civic happiness):
+
+![alt](docs/images/3-dimensions-of-preferences.png)
+
+The same goes for each city. Each city is also associated with those same 3 attributes and can be represented by a point or vector in space. So out 182 cities of interest are scattered about in 3-space:
+
+![alt](docs/images/scattered-points.png)
+
+Then the trick is to compute the distance between the user's preference vector and a city's attribute vector by means of this distance equation between two points in space:
+
+![alt](docs/images/distance-formula.png)
+
+You do that for each city and the user preferences and dump that into an array to be sorted. The shortest distance between the preference point and a city gives you the 'best' match to those preferences. All our cities are ranked this way.
+
+Finally, we also scale each axis to a range of 0 to 100 to give each preference equal weight in the distance formulat.
+
+![alt](docs/images/integration.png)
 
 The integration between the frontend and backend goes pretty quickly, about two hours of effort. Then it is all about smoothing out the rough edges and deciding we don't have runway to complete the job-lookup, though we leave it grayed-out in the design to suggest a future direction.
 
