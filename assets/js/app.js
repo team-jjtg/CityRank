@@ -47,6 +47,7 @@ Controller.prototype.setClickHandlers = function() {
     });
 
     $("#results-button").on("click", function () {
+        $("html").scrollTop(0);
         $("#result-page").show();
         $("#landing-window").hide();
         $("#slider-page").hide();
