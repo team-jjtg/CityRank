@@ -43,7 +43,7 @@ It's April 15, 2019 and we've formed into teams of four. Since we only have 2 we
 
 Jackson suggests an application to select a University. Jake suggests we generalize to selecting a city in which to live. We think about various attributes an come up with an interface that features sliders:
 
-![alt](docs/images/concepts.png)
+![alt](docs/images/concept.png)
 
 Jake got us thinking about deliverables:
 
