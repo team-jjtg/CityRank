@@ -16,10 +16,10 @@ Pattern: MVC
 
 # Roles
 
-Jake Stevens - Application concept and fullstack developer.
-Tue Quach - Frontend design
-Jackson Henry - Algorithm design
-Glenn Streiff - Model design, Integration
+* Jake Stevens - Application concept and fullstack developer.
+* Tue Quach - Frontend design
+* Jackson Henry - Algorithm design
+( Glenn Streiff - Model design, Integration
 
 # MVP
 
