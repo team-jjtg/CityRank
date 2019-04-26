@@ -53,16 +53,16 @@ Controller.prototype.setClickHandlers = function() {
         $("#slider-page").hide();
     });
 
-    $("#back-btn1").on("click", function () {
+    $("#back-btn").on("click", function () {
         $("#result-page").hide();
         $("#landing-window").show();
         $("#slider-page").hide();
     });
 
-    $("#back-btn2").on("click", function () {
+    $("#reset-button").on("click", function () {
         $("#result-page").hide();
-        $("#landing-window").hide();
-        $("#slider-page").show();
+        $("#landing-window").show();
+        $("#slider-page").hide();
     });
 
     $("#results-button").on("click", this.getRankCitiesCallback());

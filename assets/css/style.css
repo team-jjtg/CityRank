@@ -123,13 +123,13 @@ h3 {
 
 #start,
 #results-button,
-#back-btn1,
-#back-btn2 {
+#back-btn,
+#reset-button {
   margin: 0 auto;
   width: auto;
 }
 
-#back-btn1 {
+#back-btn {
   padding: 0.9375em;
   border-radius: 0.3rem;
   margin: 1.25em;
@@ -137,17 +137,7 @@ h3 {
   position: absolute;
   top: 2%;
 }
-#back-btn2 {
-  border-radius: 0.3rem;
-  margin-left: 2em;
-  margin-top: 2em;
-  display: inline-block;
-  position: absolute;
-  top: -1%;
-  font-size: 35px;
-  width: 75px;
-  height: 75px;
-}
+
 
 /*------------Mobile Responsiveness ---------*/
 
@@ -185,7 +175,7 @@ h3 {
   width: 90%;
   margin-left: 5%;
 }
-#back-btn1 {
+#back-btn {
   padding: 0.9375em;
   border-radius: 0.3rem;
   margin: 1.25em;
@@ -195,17 +185,6 @@ h3 {
   width: 50px;
   height: 50px;
   font-size: 13px;
-}
-#back-btn2 {
-  border-radius: 0.3rem;
-  margin-left: -8%;
-  margin-top: -36px;
-  display: inline-block;
-  position: absolute;
-  top: -1%;
-  font-size: 35px;
-  width: 50px;
-  height: 50px;
 }
 #result-page {
   padding: 4rem 2rem;
