@@ -79,9 +79,9 @@ CityRank.prototype.cityRank = function(userPrefs) {
     }
     let rankedCities = [];
     if (this.fb.dataFromFB.length == this.fb.expectedDbLength) {
-        rankedCities = this.fb.dataFromFB;
+        rankedCities = this.fb.dataFromFB.slice();
     } else {
-        rankedCities = this.fb.data;
+        rankedCities = this.fb.data.slice();
     }
 
     // TODO: Calculate these dynamically.  For MVP, hardcode is
