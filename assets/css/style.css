@@ -75,6 +75,7 @@ h3 {
 }
 #disabled-job-title {
   text-decoration: line-through;
+  color: #999;
 }
 .sliderContainers {
   padding: 4rem 2rem;
