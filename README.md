@@ -88,11 +88,11 @@ This code snippet in the CityRank constructor illustrates where most of the comp
 
 ```
 function CityRank(dbConfig) {
-  this.ca = new CountyAffordabiity();
-	this.cm = new CityMetrics();
-  this.cp = new CountyPolitics();
-	this.cpFields = ["rep16_frac", "dem16_frac"];
-  this.fb = new Firebase(dbConfig);
+    this.ca = new CountyAffordabiity();
+    this.cm = new CityMetrics();
+    this.cp = new CountyPolitics();
+    this.cpFields = ["rep16_frac", "dem16_frac"];
+    this.fb = new Firebase(dbConfig);
 }
 ```
 The other focal point is the controller itself which mediates input from the user and communicates with the model to send user preferences and receive ranked cities in return.  The constructor looks like this:
