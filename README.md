@@ -84,6 +84,49 @@ This data gets cooked down into several objects:
 
 ![alt](docs/images/uml-cityrank-cd.png)
 
+This code snippet in the CityRank constructor illustrates where most of the composition is happening:
+
+```
+function CityRank(dbConfig) {
+  this.ca = new CountyAffordabiity();
+	this.cm = new CityMetrics();
+  this.cp = new CountyPolitics();
+	this.cpFields = ["rep16_frac", "dem16_frac"];
+  this.fb = new Firebase(dbConfig);
+}
+```
+The other focal point is the controller itself which mediates input from the user and communicates with the model to send user preferences and receive ranked cities in return.  The constructor looks like this:
+
+```
+function Controller() {
+    this.cr = new CityRank(Firebase.prototype.glennDbConfig);
+    if (this.cr.fb.dataFromFB.length < this.cr.fb.expectedDbLength) {
+        console.log("Controller: Filtering and publishing city data to firebase.")
+        this.filteredData = this.cr.filterData();
+        this.cr.publishData(this.filteredData);
+    } else {
+        console.log("Controller: Using persisted data from firebase.");
+    }
+    this.resetView();
+    this.setClickHandlers();
+    this.writeResults = this.getWriteResultsCallback();
+    this.userPrefs = {"happiness": this.hapVal, "affordability": this.colVal, "politics": this.polVal};
+}
+```
+
+Starting the app is simply a matter of instantiating the controller, everything flows from that:
+
+```
+<!-- index.html -->
+..
+<script type="text/javascript" src="assets/js/app.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        let controller = new Controller();
+    });
+</script>
+```
+
 The political data set is huge, over 100 MB encompassing all 3143 counties:
 
 ![alt](docs/images/2016-election-map.png)
