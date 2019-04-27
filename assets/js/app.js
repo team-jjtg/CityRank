@@ -90,7 +90,7 @@ Controller.prototype.getWriteResultsCallback = function() {
             var repFraction = cityProperties[0].politics.rep16_frac.toFixed(0);
             var donkey = '<i class="fas fa-democrat fa-sm blue-text pr-3" aria-hidden="true"></i>';
             var elephant = '<i class="fas fa-republican fa-sm red-text pr-3" aria-hidden="true"></i>';
-            var politics = `${donkey} ${demFraction} %  &nbsp;&nbsp; ${elephant} ${repFraction} %`
+            var politics = `${donkey} ${demFraction}%  &nbsp;&nbsp; ${elephant} ${repFraction}%`
             var cityAfford = formatter.format(cityProperties[0].affordability);
             var newRow = $(`<p> ${i+1}. ${cityName} </br> Civic Happiness:  ${cityHappiness} </br> Median Home Price:  ${cityAfford} </br> ${politics}</p>`);
             $("#ranked-container").append(newRow);

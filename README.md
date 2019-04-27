@@ -43,7 +43,7 @@ Our application is hosted [here](https://team-jjtg.github.io/CityRank/).
 
 # Designer's Log
 
-It's April 15, 2019 and we've formed into teams of four. Since we only have 2 weeks to knock a group project, we're mindful of keeping the scope reasonable.
+It's April 15, 2019 and we've formed into teams of four. Since we only have 2 weeks to knock out a group project, we're mindful of keeping the scope reasonable.
 
 ## Initial Concept
 
@@ -63,7 +63,7 @@ Eventually we scrub on weather since that is actually more nebulous than other m
 
 ## Endpoints of Data
 
-The hunt is on for endpoints for the other data.  This is a bit of a grind and takes the better part of a week to nail down.
+The hunt is on for endpoints for the other data. This is a bit of a grind and takes the better part of a week to nail down.
 
 Jake finds:
 
@@ -71,12 +71,11 @@ Jake finds:
 - [api.census.gov](https://api.census.gov/data/2017/acs/acs5/profile?get=DP04_0089E,NAME&for=county:*) for median home price by county, an expedient proxy for affordability
 - [Civic Happiness](https://wallethub.com/edu/happiest-places-to-live/32619)
 
-The civic happiness site is a pretty cool find and is produced by these researchers:
+The civic happiness site is a cool find and includes commentary from these researchers:
 
 ![alt](docs/images/happy-city-researchers.png)
 
 It becomes an organizing resource around which much of the application is built.
-
 
 I find:
 
@@ -104,7 +103,8 @@ function CityRank(dbConfig) {
     this.fb = new Firebase(dbConfig);
 }
 ```
-The other focal point is the controller itself which mediates input from the user and communicates with the model to send user preferences and receive ranked cities in return.  The constructor looks like this:
+
+The other focal point is the controller itself which mediates input from the user and communicates with the model to send user preferences and receive ranked cities in return. The constructor looks like this:
 
 ```
 function Controller() {
@@ -173,7 +173,7 @@ Jackson works on the algorithm for ranking our cities.
 
 ![alt](docs/images/3-dimensions-of-preferences.png)
 
-You can think about a user's preferenes as existing at a point in three-dimensional space, with each preference lying on a separate axis (for affordability, politics, and civic happiness):
+You can think about a user's preferences as existing at a point in three-dimensional space, with each preference lying on a separate axis (for affordability, politics, and civic happiness):
 
 ![alt](docs/images/3d-vector.png)
 
