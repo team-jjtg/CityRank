@@ -204,3 +204,10 @@ At this stage, we have something upon which we could build:
 Perhaps as a second project, we could add more interesting visualizations:
 
 ![alt](docs/images/project-2.png)
+
+* Add latitude and longitude to city data to support map visualization.
+* Add support for automated [cross-browser testing](https://crossbrowsertesting.com/).
+* Make affordability and political data granualar to zip code for better affinity with candidate cities instead of relying on 'chunky' county data.
+* Refactor model to take advantage of some inheritance around notion of static and dynamic data sources.
+* Use [templates](https://mustache.github.io/) to generate results.
+
