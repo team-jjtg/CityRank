@@ -69,7 +69,14 @@ Jake finds:
 
 - [jooble](https://us.jooble.org/) for jobs
 - [api.census.gov](https://api.census.gov/data/2017/acs/acs5/profile?get=DP04_0089E,NAME&for=county:*) for median home price by county, an expedient proxy for affordability
-- [civic happiness](https://wallethub.com/edu/happiest-places-to-live/32619)
+- [Civic Happiness](https://wallethub.com/edu/happiest-places-to-live/32619)
+
+The civic happiness site is a pretty cool find and is produced by these researchers:
+
+![alt](docs/images/happy-city-researchers.png)
+
+It becomes an organizing resource around which much of the application is built.
+
 
 I find:
 
