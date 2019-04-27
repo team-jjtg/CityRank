@@ -14,8 +14,8 @@ Indentify cities that align with your personal beliefs and priorities while putt
 
 # Tech Stack
 
-- Frontend: HTML, CSS, Javascript, Jquery, Bootstrap, Bootstrap Material Design, AJAX.
-- Backend: Firebase
+- Frontend: HTML, CSS, Javascript, Jquery, Bootstrap, [Bootstrap Material Design](https://fezvrasta.github.io/bootstrap-material-design/), AJAX.
+- Backend: [Firebase](https://firebase.google.com/)
 - Pattern: [Model View Controller](https://developer.chrome.com/apps/app_frameworks) (MVC)
 
 # Roles
