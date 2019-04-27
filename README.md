@@ -78,6 +78,8 @@ I find:
 
 ## Our Data Model
 
+After Jake hands me some example code for interfacing with the jobs and affordability endpoints, I focus on the model and Jake shifts to working with Tue on the frontend.
+
 This data gets cooked down into several objects:
 
 ![alt](docs/images/uml-cityrank-cd.png)
@@ -115,9 +117,9 @@ Initially I think it would be cool to explore Material Lite UI, and that sends T
 
 ## Ranking Algorithm
 
-![alt](docs/images/3-dimensions-of-preferences.png)
-
 Jackson works on the algorithm for ranking our cities.
+
+![alt](docs/images/3-dimensions-of-preferences.png)
 
 You can think about a user's preferenes as existing at a point in three-dimensional space, with each preference lying on a separate axis (for affordability, politics, and civic happiness):
 
@@ -138,8 +140,6 @@ Finally, we also scale each axis to a range of 0 to 100 to give each preference 
 ## Integration
 
 ![alt](docs/images/integration.png)
-
-After Jake hands me some example code for interfacing with the jobs and affordability endpoints, I focus on the model and Jake shifts to working with Tue on the frontend.
 
 The integration between the frontend and backend goes pretty quickly, about two hours of effort. Then it is all about smoothing out the rough edges and deciding we don't have runway to complete the job-lookup, though we leave it grayed-out in the design to suggest a future direction.
 
