@@ -16,7 +16,7 @@ Indentify cities that align with your personal beliefs and priorities while putt
 
 - Frontend: HTML, CSS, Javascript, Jquery, Bootstrap, Bootstrap Material Design, AJAX.
 - Backend: Firebase
-- Pattern: MVC
+- Pattern: [Model View Controller](https://developer.chrome.com/apps/app_frameworks) (MVC)
 
 # Roles
 
