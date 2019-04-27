@@ -84,6 +84,8 @@ This data gets cooked down into several objects:
 
 ![alt](docs/images/uml-cityrank-cd.png)
 
+From an MVC perspective, the CityRank object /is/ the model, encompassing several sub-model objects that amount to thin object wrappers around static or dynamic data.
+
 This code snippet in the CityRank constructor illustrates where most of the composition is happening:
 
 ```
@@ -114,7 +116,7 @@ function Controller() {
 }
 ```
 
-Starting the app is simply a matter of instantiating the controller, everything flows from that:
+Starting the app is simply a matter of instantiating the controller:
 
 ```
 <!-- index.html -->
