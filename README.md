@@ -63,7 +63,7 @@ Eventually we scrub on weather since that is actually more nebulous than other m
 
 ## Endpoints of Data
 
-The hunt is on for endpoints for the other data.
+The hunt is on for endpoints for the other data.  This is a bit of a grind and takes the better part of a week to nail down.
 
 Jake finds:
 
